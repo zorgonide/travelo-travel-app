@@ -1,18 +1,17 @@
-import './App.css';
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./Components/Pages/LoginPage";
+import RegisterPage from "./Components/Pages/RegisterPage";
+import HomePage from "./Components/Pages/HomePage";
+
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="display-1">
-            <div className="col">
-              Transport application
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/register" element={<RegisterPage />} />
+    </Routes>
   );
 }
 
