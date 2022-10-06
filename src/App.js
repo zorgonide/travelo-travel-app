@@ -1,17 +1,16 @@
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Routes, Route } from "react-router-dom";
-import LoginPage from "./Components/Pages/LoginPage";
-import RegisterPage from "./Components/Pages/RegisterPage";
-import HomePage from "./Components/Pages/HomePage";
+import Main from "./Components/Pages/Main";
+import { useState, createContext } from "react";
+const UserContext = createContext()
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
-    <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/" element={<HomePage />} />
-      <Route path="/register" element={<RegisterPage />} />
-    </Routes>
+    <UserContext.Provider value={{loggedIn, setLoggedIn}}>
+      <Main/>
+    </UserContext.Provider>
   );
 }
 
