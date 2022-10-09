@@ -1,5 +1,76 @@
-// $myColor: red;
+$deep-peach: #f9cba5;
+$pale-orange: #fde2bb;
+$old-lace: #fef2e6;
+$sky-blue: #4fbfa8;
+$gray: #555555;
+html,
+body {
+  height: 100vh;
+}
+.app {
+  height: 100vh;
+  background-color: $old-lace;
+}
+.container-fluid {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img {
+    // width:330;
+    // height: 330;
+    overflow:auto;
+}
+.form-floating {
+    color: #9a9a9a ;
+}
+.link{
+    a:visited {
+        color: $sky-blue !important;
+    }
+    a:active {
+        color: #1b6970 !important;
+    }
+    a {
+        color: $sky-blue !important;
+        text-decoration: none;
+    }
+}
+.gray {
+    color: $gray;
+}
 
-// .display-1 {
-//   color: $myColor;
-// }
+.button {
+    background-color: $sky-blue; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+.button1 {
+    background-color: white; 
+    color: $sky-blue; 
+    border: 2px solid $sky-blue;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.button1:hover {
+    background-color: $sky-blue;
+    color: white;
+}
+.error{
+    text-align: left;
+    color: $deep-peach;
+    padding-left: 4px;
+    font-size: 15px;
+}
