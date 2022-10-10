@@ -12,16 +12,16 @@ const LoginSchema = Yup.object().shape({
 function LoginPage() {
   return (
     <div className="container-fluid">
-      <div className="row justify-content-center align-items-center">
-        <div className="col-sm-12 text-center">
-          <div className="card">
+      <div className="row justify-content-center">
+        <div className="col-12 text-center">
+          <div className="card my-3">
             <div className="card-body">
-              <p className="card-title display-5 gray">Log In</p>
+              <p className="card-title display-6 gray">Log In</p>
               <div className="img">
                 <img
                   src={LogIn}
-                  width="330"
-                  height="330"
+                  width="260"
+                  height="230"
                   className=""
                   alt="login"
                 />
