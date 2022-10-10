@@ -5,21 +5,23 @@ $sky-blue: #4fbfa8;
 $gray: #555555;
 html,
 body {
-  height: 100vh;
+  min-height: 100vh;
 }
 .app {
-  height: 100vh;
-  background-color: $old-lace;
+  min-height: 100vh;
+  background-color: $old-lace; //changes background color
 }
 .container-fluid {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.contain-center{
+    justify-content: center;
+    align-items: center;
+}
 .img {
-    // width:330;
-    // height: 330;
     overflow:auto;
 }
 .form-floating {
