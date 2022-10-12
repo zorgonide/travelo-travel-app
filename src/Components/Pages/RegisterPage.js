@@ -4,28 +4,25 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import SignUp from "../Images/signup.svg";
 
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
 const SignUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().required("Required"),
   firstname: Yup.string().required("Required"),
   lastname: Yup.string().required("Required"),
+  phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').required("Required"),
+  confirmpassword: Yup.string().required("Required"),
 });
 
 function RegisterPage() {
+  const isPasswordValid = (password, confirmpassword) => {
+    if (!password || !confirmpassword) return false;
+    return password === confirmpassword;
+  };
   return (
     <div className="container-fluid">
       <div className="row justify-content-center">
-        {/* <div className="col-12 col-sm-8 align-self-center">
-          <div className="img">
-            <img
-              src={SignUp}
-              width="500"
-              height="500"
-              className=""
-              alt="login"
-            />
-          </div>
-        </div> */}
         <div className="col-12 text-center">
         <div className="card my-3">
           {/* <img src="..." class="card-img-top" alt="..."> */}
@@ -51,8 +48,12 @@ function RegisterPage() {
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={async (values) => {
-                  await new Promise((r) => setTimeout(r, 500));
-                  alert(JSON.stringify(values, null, 2));
+                  if (isPasswordValid(values.password, values.confirmpassword)){
+                    await new Promise((r) => setTimeout(r, 500));
+                    alert(JSON.stringify(values, null, 2));
+                  }
+                  else alert("Passwords do not match")
+                  
                 }}
               >
                 {({ errors, touched }) => (
@@ -96,6 +97,19 @@ function RegisterPage() {
                     <div className="form-floating mb-3">
                       <Field
                         className="form-control"
+                        id="phone"
+                        type="phone"
+                        name="phone"
+                        placeholder="phone"
+                      />
+                      <label htmlFor="phonenumber">Phone</label>
+                      <div className="error">
+                        <ErrorMessage name="phone" />
+                      </div>
+                    </div>
+                    <div className="form-floating mb-3">
+                      <Field
+                        className="form-control"
                         id="password"
                         type="password"
                         name="password"
@@ -106,11 +120,12 @@ function RegisterPage() {
                         <ErrorMessage name="password" />
                       </div>
                     </div>
+
                     <div className="form-floating mb-3">
                       <Field
                         className="form-control"
                         id="confirmpassword"
-                        type="confirmpassword"
+                        type="password"
                         name="confirmpassword"
                         placeholder="confirmpassword"
                       />
