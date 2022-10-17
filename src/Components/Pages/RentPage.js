@@ -1,4 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMotorcycle, faLocationDot, faSearch } from '@fortawesome/free-solid-svg-icons'
+
 const sampleData = {
   success: true,
   error_code: 0,
@@ -6,7 +9,7 @@ const sampleData = {
   info: [
     {
       id: 1,
-      name: "Buchanon",
+      name: "Buchanan",
       address: "NE4 5PH",
       total_bikes: 2,
     },
@@ -43,21 +46,46 @@ const sampleData = {
   ],
 };
 function RentPage() {
+  const [locationValue, setLocation] = useState("")
+  let filteredLocations = sampleData.info.filter(
+    (location) => {
+        return location.name.toLowerCase().indexOf(locationValue.toLowerCase()) !== -1;
+    }
+);
   return (
     <div className="container-fluid">
       <div className="row justify-content-center">
         <div className="col-12 text-center">
-          <div className="card my-3" style={{ minWidth: "23rem" }}>
+          <div className="card my-3" style={{ minWidth: "29rem" }}>
             <div className="card-body">
               <p className="card-title display-6 gray">Select Location</p>
+              <hr/>
+              <div className="input-group input-group-sm mb-3">
+                <input type="text" className="form-control" aria-label="Search" placeholder="Search" onChange={(e)=>setLocation(e.target.value)}/>
+                <div className="input-group-append">
+                  <span className="input-group-text"><FontAwesomeIcon icon={faSearch} size="xl"/></span>
+                </div>
+              </div>
               <div className="list-group">
                 {
-                  sampleData.info.map((element) => {
+                  filteredLocations.map((element) => {
                     return(
-                      <button  key={element.id} type="button" className="button1 list-group-item list-group-item-action">
-                        {element.name}
-                        <p className="text-muted">{element.address}</p>
-                        <p className="text-danger">{element.total_bikes}</p>
+                      <button  key={element.id} type="button" className="list-group-item list-group-item-action">
+                        <div className="row justify-content-between">
+                          <div className="col align-self-center">
+                            <p className="name">{element.name}</p>
+                          </div>
+                          <div className="col">
+                            <div className="row">
+                              <div className="col-12">
+                                <p className="text-muted"><FontAwesomeIcon icon={faLocationDot} /> {element.address}</p>
+                              </div>
+                              <div className="col">
+                                <p className="text-danger"><FontAwesomeIcon icon={faMotorcycle} /> {element.total_bikes}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </button>
                     )
                   })
