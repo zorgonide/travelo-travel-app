@@ -7,9 +7,10 @@ function CustomerHomePage() {
         <div className="container-fluid">
             <div className="row justify-content-center">
                 <div className="col-12 text-center">
-                    <div className="card my-3" style={{minWidth: "23rem"}}>
+                    <div className="card my-3" style={{minWidth: "29rem"}}>
                         <div className="card-body">
                             <p className="card-title display-6 gray">Select Action</p>
+                            <hr/>
                             <div className="d-grid gap-2">
                                 <button className="button button1 mb-3">
                                     Return

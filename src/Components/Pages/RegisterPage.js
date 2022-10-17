@@ -24,7 +24,7 @@ function RegisterPage() {
     <div className="container-fluid">
       <div className="row justify-content-center">
         <div className="col-12 text-center">
-        <div className="card my-3" style={{minWidth: "23rem"}}>
+        <div className="card my-3" style={{minWidth: "29rem"}}>
           {/* <img src="..." class="card-img-top" alt="..."> */}
           <div className="card-body">
             {/* <p className="card-title display-6 gray text-center">Register</p> */}
