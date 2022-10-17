@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import LogIn from "../Images/login1.svg";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -10,6 +11,7 @@ const LoginSchema = Yup.object().shape({
 });
 
 function LoginPage() {
+  const navigate = useNavigate();
   return (
     <div className="container-fluid">
       <div className="row justify-content-center">
@@ -34,7 +36,8 @@ function LoginPage() {
                 validationSchema={LoginSchema}
                 onSubmit={async (values) => {
                   await new Promise((r) => setTimeout(r, 500));
-                  alert(JSON.stringify(values, null, 2));
+                  // alert(JSON.stringify(values, null, 2));
+                  navigate("/");
                 }}
               >
                 {({ errors, touched }) => (

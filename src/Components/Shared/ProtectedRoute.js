@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 
 function ProtectedRoute(props) {
-  let verified = false;
+  let verified = true;
   return verified ? <Outlet /> : <Navigate to={{ pathname: '/login' }} />
 }
 
