@@ -64,8 +64,35 @@ const sampleData = {
     ]
 }
 function BikesPage() {
-  return (
-    <div>BikesPage</div>
+    return (
+      <div className="container-fluid">
+          <div className="row justify-content-center">
+              <div className="col-12 text-center">
+                  <div className="card my-3" style={{minWidth: "23rem"}}>
+                      <div className="card-body">
+                          <p className="card-title display-6 gray">Bike</p>
+                          {
+                            sampleData.info.map((element) => {
+                              return(
+                        
+                                  <ul class="list-group">
+                                  <li class="list-group-item">ID: {element.id}</li>
+                                  <li class="list-group-item">Type: {element.type}</li>
+                                  <li class="list-group-item">Battery: {element.battery}</li>
+                                  <li class="list-group-item">Location ID: {element.location_id}</li>
+                                  
+                                </ul>
+                              )
+                            })
+                          }
+                 
+                  
+                          
+                      </div>
+                  </div>   
+              </div>
+          </div>
+      </div>
   )
 }
 
