@@ -16,7 +16,7 @@ function Main() {
         <Route path="/" element={<ProtectedRoute />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/rent" element={<RentPage />} />
-          <Route path="/select" element={<BikesPage />} />
+          <Route path="/rent/:locationId" element={<BikesPage />} />
         </Route>
         <Route
           path="*"

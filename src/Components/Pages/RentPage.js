@@ -5,6 +5,7 @@ import {
   faLocationDot,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const sampleData = {
   success: true,
@@ -81,7 +82,8 @@ function RentPage() {
               <div className="list-group">
                 {filteredLocations.map((element) => {
                   return (
-                    <button
+                    <Link
+                      to={`${element.id}`}
                       key={element.id}
                       type="button"
                       className="list-group-item list-group-item-action"
@@ -107,7 +109,7 @@ function RentPage() {
                           </div>
                         </div>
                       </div>
-                    </button>
+                    </Link>
                   );
                 })}
               </div>
