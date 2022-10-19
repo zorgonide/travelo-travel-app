@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function ManagerHomePage() {
-  return (
-    <div>ManagerHomePage</div>
-  )
+  return <div>ManagerHomePage</div>;
 }
 
-export default ManagerHomePage
+export default ManagerHomePage;
