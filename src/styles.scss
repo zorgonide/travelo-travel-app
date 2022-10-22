@@ -12,81 +12,94 @@ body {
   background-color: $old-lace; //changes background color
 }
 .container-fluid {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.contain-center{
-    justify-content: center;
-    align-items: center;
+.contain-center {
+  justify-content: center;
+  align-items: center;
 }
 .img {
-    overflow:auto;
+  overflow: auto;
 }
 .form-floating {
-    color: #9a9a9a ;
+  color: #9a9a9a;
 }
-.link{
-    a:visited {
-        color: $sky-blue !important;
-    }
-    a:active {
-        color: #1b6970 !important;
-    }
-    a {
-        color: $sky-blue !important;
-        text-decoration: none;
-    }
+.link {
+  a:visited {
+    color: $sky-blue !important;
+  }
+  a:active {
+    color: #1b6970 !important;
+  }
+  a {
+    color: $sky-blue !important;
+    text-decoration: none;
+  }
 }
 .gray {
-    color: $gray;
+  color: $gray;
 }
 
 .button {
-    background-color: $sky-blue; /* Green */
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
-  
+  background-color: $sky-blue; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
 .button1 {
-    background-color: white; 
-    color: $sky-blue; 
-    border: 2px solid $sky-blue;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+  background-color: white;
+  color: $sky-blue;
+  border: 2px solid $sky-blue;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .button1:hover {
-    background-color: $sky-blue;
-    color: white;
+  background-color: $sky-blue;
+  color: white;
 }
-.error{
-    text-align: left;
-    color: $deep-peach;
-    padding-left: 4px;
-    font-size: 15px;
+.error {
+  text-align: left;
+  color: $deep-peach;
+  padding-left: 4px;
+  font-size: 15px;
 }
 .list-group-item {
-    :hover {
-        color: $sky-blue;
-    }
-    .name {
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-    }
+  :hover {
+    color: $sky-blue;
+  }
+  .name {
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
 }
 
 .input-group-text {
-    border-radius: 0 0.375rem 0.375em 0 !important;
+  border-radius: 0 0.375rem 0.375em 0 !important;
+}
+.list-card {
+  text-align: left;
+  border: 0.5px solid #b7b7b7;
+  text-decoration: none;
+  margin-bottom: 5px;
+  cursor: pointer;
+  font-weight: 480;
+  :hover {
+    .name {
+      color: $sky-blue;
+    }
+  }
 }

@@ -1,17 +1,24 @@
-import React from 'react'
+import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import SignUp from "../Images/signup.svg";
 
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const SignUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().required("Required"),
-  firstname: Yup.string().required("Required"),
-  lastname: Yup.string().required("Required"),
-  phone: Yup.string().matches(phoneRegExp, 'Phone number is not valid').required("Required"),
+  firstname: Yup.string()
+    .matches(/^[A-Za-z]+$/, "Only letters allowed")
+    .required("Required"), //put in number validation
+  lastname: Yup.string()
+    .matches(/^[A-Za-z]+$/, "Only letters allowed")
+    .required("Required"),
+  phone: Yup.string()
+    .matches(phoneRegExp, "Phone number is not valid")
+    .required("Required"),
   confirmpassword: Yup.string().required("Required"),
 });
 
@@ -24,36 +31,36 @@ function RegisterPage() {
     <div className="container-fluid">
       <div className="row justify-content-center">
         <div className="col-12 text-center">
-        <div className="card my-3" style={{minWidth: "29rem"}}>
-          {/* <img src="..." class="card-img-top" alt="..."> */}
-          <div className="card-body">
-            {/* <p className="card-title display-6 gray text-center">Register</p> */}
-            <div className="img">
-              <img
-                src={SignUp}
-                width="250"
-                height="200"
-                className=""
-                alt="login"
-              />
-            </div>
-            <Formik
+          <div className="card my-3" style={{ minWidth: "29rem" }}>
+            {/* <img src="..." class="card-img-top" alt="..."> */}
+            <div className="card-body">
+              {/* <p className="card-title display-6 gray text-center">Register</p> */}
+              <div className="img">
+                <img
+                  src={SignUp}
+                  width="250"
+                  height="200"
+                  className=""
+                  alt="login"
+                />
+              </div>
+              <Formik
                 initialValues={{
                   password: "",
                   email: "",
                   firstname: "",
                   lastname: "",
                   phone: "",
-                  confirmpassword: ""
+                  confirmpassword: "",
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={async (values) => {
-                  if (isPasswordValid(values.password, values.confirmpassword)){
+                  if (
+                    isPasswordValid(values.password, values.confirmpassword)
+                  ) {
                     await new Promise((r) => setTimeout(r, 500));
                     alert(JSON.stringify(values, null, 2));
-                  }
-                  else alert("Passwords do not match")
-                  
+                  } else alert("Passwords do not match");
                 }}
               >
                 {({ errors, touched }) => (
@@ -144,13 +151,13 @@ function RegisterPage() {
               </Formik>
             </div>
             <div className="card-footer text-muted text-center link">
-                Already registered? <Link to="/login">Log In</Link>
+              Already registered? <Link to="/login">Log In</Link>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default RegisterPage
+export default RegisterPage;
