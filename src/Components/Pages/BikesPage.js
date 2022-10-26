@@ -4,17 +4,18 @@ import {
   faBattery5,
   faBattery3,
   faBattery2,
+  faHashtag,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { fget } from "../Shared/apiCalls";
+import { fget, fpost } from "../Shared/apiCalls";
 import Error from "./Error";
+import Swal from "sweetalert2";
 
 function BikesPage() {
   let navigate = useNavigate();
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [totalItems, setTotalItems] = useState([]);
-  const [locationValue, setLocation] = useState("");
   let { locationId } = useParams();
 
   useEffect(() => {
@@ -36,11 +37,53 @@ function BikesPage() {
         }
       );
   };
+  const confirmOrder = (bikeId) => {
+    Swal.fire({
+      title: "Confirm Order",
+      text: `Do you want to book vehicle #${bikeId}`,
+      icon: "question",
+      confirmButtonText: "Yes",
+      showCancelButton: true,
+    }).then((res) => {
+      if (res.isConfirmed)
+        fpost({
+          url: `customer/AssignBike`,
+          data: {
+            vehicle_id: bikeId,
+            user_id: 1,
+          },
+        })
+          .then((res) => res.data)
+          .then((res) => {
+            if (res.success) {
+              Swal.fire({
+                title: "Order Confirmed",
+                html: `<p>Vehicle ${bikeId} has been assigned to you</p>`,
+                icon: "success",
+                confirmButtonText: "Okay",
+              });
+            } else {
+              Swal.fire({
+                title: "Error",
+                text: `Some error occurred`,
+                icon: "error",
+                confirmButtonText: "Dismiss",
+              });
+            }
+          });
+    });
+  };
   const getBatteryLevel = (battery) => {
-    if (battery == 100) {
+    if (battery === 100) {
       return faBattery5;
     } else if (battery < 100 && battery >= 50) return faBattery3;
     else return faBattery2;
+  };
+  const getBatteryColor = (battery) => {
+    if (battery === 100) {
+      return "green";
+    } else if (battery < 100 && battery >= 50) return "orange";
+    else return "red";
   };
   const RenderList = () => {
     return (
@@ -50,8 +93,14 @@ function BikesPage() {
             <div
               className="row list-card pt-3 text-uppercase"
               key={element.id}
-              onClick={() => navigate(`${element.id}`)}
+              onClick={() => confirmOrder(`${element.id}`)}
             >
+              <div className="col-2">
+                <p>
+                  {" "}
+                  <FontAwesomeIcon icon={faHashtag} /> {element.id}
+                </p>
+              </div>
               <div className="col-6">
                 <p className="name">
                   {element.type === "gas_scooter"
@@ -61,7 +110,10 @@ function BikesPage() {
               </div>
               <div className="col text-center">
                 <p className="text-muted">
-                  <FontAwesomeIcon icon={getBatteryLevel(element.battery)} />{" "}
+                  <FontAwesomeIcon
+                    icon={getBatteryLevel(element.battery)}
+                    color={getBatteryColor(element.battery)}
+                  />{" "}
                   {element.battery}
                 </p>
               </div>
