@@ -99,7 +99,13 @@ export default function RentPage() {
                     </span>
                   </div>
                 </div>
-                <RenderList />
+                {filteredLocations.length === 0 ? (
+                  <div className="row list-card pt-3 text-uppercase text-center">
+                    <p className="name">No location found</p>
+                  </div>
+                ) : (
+                  <RenderList />
+                )}
               </div>
             </div>
           </div>

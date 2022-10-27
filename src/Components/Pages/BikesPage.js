@@ -87,7 +87,7 @@ function BikesPage() {
   };
   const RenderList = () => {
     return (
-      <div>
+      <>
         {totalItems.info.map((element) => {
           return (
             <div
@@ -120,7 +120,7 @@ function BikesPage() {
             </div>
           );
         })}
-      </div>
+      </>
     );
   };
   if (!isLoaded) {
@@ -136,7 +136,13 @@ function BikesPage() {
               <div className="card-body">
                 <p className="card-title display-6 gray">Select Bike</p>
                 <hr></hr>
-                <RenderList />
+                {totalItems.info.length === 0 ? (
+                  <div className="row list-card pt-3 text-uppercase text-center">
+                    <p className="name">No bikes at this location</p>
+                  </div>
+                ) : (
+                  <RenderList />
+                )}
               </div>
             </div>
           </div>
