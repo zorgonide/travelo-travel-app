@@ -44,7 +44,11 @@ function LoginPage() {
                   <Form>
                     <div className="form-floating mb-3">
                       <Field
-                        className="form-control"
+                        className={
+                          errors.email && touched.email
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
                         id="email"
                         name="email"
                         placeholder="example@email.com"
@@ -56,7 +60,11 @@ function LoginPage() {
                     </div>
                     <div className="form-floating mb-3">
                       <Field
-                        className="form-control"
+                        className={
+                          errors.password && touched.password
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
                         id="password"
                         type="password"
                         name="password"

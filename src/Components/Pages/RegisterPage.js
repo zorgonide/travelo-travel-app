@@ -67,7 +67,11 @@ function RegisterPage() {
                   <Form>
                     <div className="form-floating mb-3">
                       <Field
-                        className="form-control"
+                        className={
+                          touched.email && errors.email
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
                         id="email"
                         name="email"
                         placeholder="example@email.com"
@@ -79,7 +83,11 @@ function RegisterPage() {
                     </div>
                     <div className="form-floating mb-3">
                       <Field
-                        className="form-control"
+                        className={
+                          touched.firstname && errors.firstname
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
                         id="firstname"
                         name="firstname"
                         placeholder="example@firstname.com"
@@ -91,7 +99,11 @@ function RegisterPage() {
                     </div>
                     <div className="form-floating mb-3">
                       <Field
-                        className="form-control"
+                        className={
+                          touched.lastname && errors.lastname
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
                         id="lastname"
                         name="lastname"
                         placeholder="example@lastname.com"
@@ -103,7 +115,11 @@ function RegisterPage() {
                     </div>
                     <div className="form-floating mb-3">
                       <Field
-                        className="form-control"
+                        className={
+                          touched.phone && errors.phone
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
                         id="phone"
                         type="phone"
                         name="phone"
@@ -116,7 +132,11 @@ function RegisterPage() {
                     </div>
                     <div className="form-floating mb-3">
                       <Field
-                        className="form-control"
+                        className={
+                          touched.password && errors.password
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
                         id="password"
                         type="password"
                         name="password"
@@ -130,7 +150,11 @@ function RegisterPage() {
 
                     <div className="form-floating mb-3">
                       <Field
-                        className="form-control"
+                        className={
+                          touched.confirmpassword && errors.confirmpassword
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
                         id="confirmpassword"
                         type="password"
                         name="confirmpassword"
