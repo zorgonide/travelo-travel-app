@@ -12,7 +12,12 @@ function CustomerHomePage() {
               <p className="card-title display-6 gray">Select Action</p>
               <hr />
               <div className="d-grid gap-2">
-                <button className="button button1 mb-3">Return</button>
+                <button
+                  onClick={() => navigate("/return")}
+                  className="button button1 mb-3"
+                >
+                  Return
+                </button>
               </div>
               <div className="d-grid gap-2">
                 <button
@@ -23,7 +28,12 @@ function CustomerHomePage() {
                 </button>
               </div>
               <div className="d-grid gap-2">
-                <button className="button button1 mb-3">Report</button>
+                <button
+                  onClick={() => navigate("/report")}
+                  className="button button1 mb-3"
+                >
+                  Report
+                </button>
               </div>
             </div>
           </div>

@@ -4,13 +4,33 @@ import LogIn from "../Images/login1.svg";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+// import { useCount } from "../Shared/count-context";
+import { fpost } from "../Shared/apiCalls";
+import Swal from "sweetalert2";
+import { useUser } from "../Shared/user-context";
 
+// function CountDisplay() {
+//   const {
+//     state: { count },
+//   } = useCount();
+//   return <div>{`The current count is ${count}`}</div>;
+// }
+
+// function Counter() {
+//   const { dispatch } = useCount();
+//   return (
+//     <button onClick={() => dispatch({ type: "increment" })}>
+//       Increment count
+//     </button>
+//   );
+// }
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().required("Required"),
 });
 
 function LoginPage() {
+  const { dispatch } = useUser();
   const navigate = useNavigate();
   return (
     <div className="container-fluid">
@@ -35,9 +55,36 @@ function LoginPage() {
                 }}
                 validationSchema={LoginSchema}
                 onSubmit={async (values) => {
-                  await new Promise((r) => setTimeout(r, 500));
+                  fpost({
+                    url: `customer/LoginUser`,
+                    data: {
+                      email: values.email,
+                      password: values.password,
+                    },
+                  })
+                    .then((res) => res.data)
+                    .then((res) => {
+                      if (res.success) {
+                        dispatch({ type: "login", user: res.info });
+                        navigate("/");
+                      } else {
+                        Swal.fire({
+                          title: "Error",
+                          text: `Incorrect username or password`,
+                          icon: "error",
+                          confirmButtonText: "Dismiss",
+                        });
+                      }
+                    })
+                    .catch(() => {
+                      Swal.fire({
+                        title: "Error",
+                        text: `Incorrect username or password`,
+                        icon: "error",
+                        confirmButtonText: "Dismiss",
+                      });
+                    });
                   // alert(JSON.stringify(values, null, 2));
-                  navigate("/");
                 }}
               >
                 {({ errors, touched }) => (

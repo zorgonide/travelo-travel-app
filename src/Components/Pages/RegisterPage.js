@@ -3,13 +3,29 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import SignUp from "../Images/signup.svg";
+import { fpost } from "../Shared/apiCalls";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const SignUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string().required("Required"),
+  password: Yup.string()
+    .label("password")
+    .required("Required")
+    .min(8, "Seems a bit short...")
+    .matches(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+      "At least 1 letter, 1 number and 1 special character"
+    ),
+  confirmpassword: Yup.string()
+    .required("Required")
+    .label("confirmpassword")
+    .test("passwords-match", "Passwords don't match", function (value) {
+      return this.parent.password === value;
+    }),
   firstname: Yup.string()
     .matches(/^[A-Za-z]+$/, "Only letters allowed")
     .required("Required"), //put in number validation
@@ -19,14 +35,10 @@ const SignUpSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(phoneRegExp, "Phone number is not valid")
     .required("Required"),
-  confirmpassword: Yup.string().required("Required"),
 });
 
 function RegisterPage() {
-  const isPasswordValid = (password, confirmpassword) => {
-    if (!password || !confirmpassword) return false;
-    return password === confirmpassword;
-  };
+  const navigate = useNavigate();
   return (
     <div className="container-fluid">
       <div className="row justify-content-center">
@@ -55,12 +67,37 @@ function RegisterPage() {
                 }}
                 validationSchema={SignUpSchema}
                 onSubmit={async (values) => {
-                  if (
-                    isPasswordValid(values.password, values.confirmpassword)
-                  ) {
-                    await new Promise((r) => setTimeout(r, 500));
-                    alert(JSON.stringify(values, null, 2));
-                  } else alert("Passwords do not match");
+                  fpost({
+                    url: "customer/registerUser",
+                    data: {
+                      first_name: values.firstname,
+                      last_name: values.lastname,
+                      email: values.email,
+                      type: "customer",
+                      password: values.password,
+                    },
+                  })
+                    .then((res) => res.data)
+                    .then((res) => {
+                      if (res.success) {
+                        Swal.fire({
+                          title: "Success",
+                          text: `New user created`,
+                          icon: "success",
+                          confirmButtonText: "Log In",
+                        }).then((res) => {
+                          if (res.isConfirmed) navigate("/login");
+                        });
+                      }
+                    })
+                    .catch(() => {
+                      Swal.fire({
+                        title: "Error",
+                        text: `User already exists`,
+                        icon: "error",
+                        confirmButtonText: "Dismiss",
+                      });
+                    });
                 }}
               >
                 {({ errors, touched }) => (

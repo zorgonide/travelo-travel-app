@@ -10,6 +10,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { fget, fpost } from "../Shared/apiCalls";
 import Error from "./Error";
 import Swal from "sweetalert2";
+import { useUser } from "../Shared/user-context";
 
 function BikesPage() {
   let navigate = useNavigate();
@@ -17,9 +18,12 @@ function BikesPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [totalItems, setTotalItems] = useState([]);
   let { locationId } = useParams();
-
+  const {
+    state: { location },
+  } = useUser();
   useEffect(() => {
     fetchBikes();
+    console.log(location);
   }, []);
   const fetchBikes = () => {
     fget({
@@ -61,6 +65,8 @@ function BikesPage() {
                 html: `<p>Vehicle ${bikeId} has been assigned to you</p>`,
                 icon: "success",
                 confirmButtonText: "Okay",
+              }).then((res) => {
+                if (res.isConfirmed) navigate("/");
               });
             } else {
               Swal.fire({
@@ -74,15 +80,15 @@ function BikesPage() {
     });
   };
   const getBatteryLevel = (battery) => {
-    if (battery === 100) {
+    if (battery <= 100 && battery >= 70) {
       return faBattery5;
-    } else if (battery < 100 && battery >= 50) return faBattery3;
+    } else if (battery < 70 && battery >= 50) return faBattery3;
     else return faBattery2;
   };
   const getBatteryColor = (battery) => {
-    if (battery === 100) {
+    if (battery <= 100 && battery >= 70) {
       return "green";
-    } else if (battery < 100 && battery >= 50) return "orange";
+    } else if (battery < 70 && battery >= 50) return "orange";
     else return "red";
   };
   const RenderList = () => {
@@ -123,6 +129,9 @@ function BikesPage() {
       </>
     );
   };
+  const parseAddress = (address) => {
+    return address.split(" ").join("+");
+  };
   if (!isLoaded) {
     return <div>Loading Page</div>;
   } else if (error) {
@@ -134,8 +143,19 @@ function BikesPage() {
           <div className="col-12 col-sm-4 text-center">
             <div className="card my-3 px-3" style={{ minWidth: "26rem" }}>
               <div className="card-body">
-                <p className="card-title display-6 gray">Select Bike</p>
+                <p className="card-title display-6 gray">{location.name}</p>
                 <hr></hr>
+                <div className="row my-4">
+                  <div className="col">
+                    <iframe
+                      src={`https://maps.google.com/maps?q=${parseAddress(
+                        location.address
+                      )}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                      title="Location info"
+                      width={"100%"}
+                    ></iframe>
+                  </div>
+                </div>
                 {totalItems.info.length === 0 ? (
                   <div className="row list-card pt-3 text-uppercase text-center">
                     <p className="name">No bikes at this location</p>

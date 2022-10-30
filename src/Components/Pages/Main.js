@@ -2,11 +2,12 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "../Shared/ProtectedRoute";
 import BikesPage from "./BikesPage";
-import ConfirmOrder from "./ConfirmOrder";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 import RentPage from "./RentPage";
+import ReportPage from "./ReportPage";
+import ReturnPage from "./ReturnPage";
 
 function Main() {
   return (
@@ -18,7 +19,8 @@ function Main() {
           <Route path="/" element={<HomePage />} />
           <Route path="/rent" element={<RentPage />} />
           <Route path="/rent/:locationId" element={<BikesPage />} />
-          <Route path="/rent/:locationId/:bikeId" element={<ConfirmOrder />} />
+          <Route path="/return" element={<ReturnPage />} />
+          <Route path="/report" element={<ReportPage />} />
         </Route>
         <Route
           path="*"

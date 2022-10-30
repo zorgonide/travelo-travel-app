@@ -8,8 +8,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import { fget } from "../Shared/apiCalls";
 import Error from "./Error";
+import { useUser } from "../Shared/user-context";
 
 export default function RentPage() {
+  const { dispatch } = useUser();
   let navigate = useNavigate();
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,7 +38,9 @@ export default function RentPage() {
   useEffect(() => {
     fetchLocations();
   }, []);
-
+  const parseAddress = (address) => {
+    return address.split(" ").join("+");
+  };
   if (!isLoaded) {
     return <div>Loading Page</div>;
   } else if (error) {
@@ -50,12 +54,29 @@ export default function RentPage() {
               <div
                 className="row list-card pt-3 text-uppercase"
                 key={element.id}
-                onClick={() => navigate(`${element.id}`)}
               >
-                <div className="col-6">
+                <div
+                  className="col-6"
+                  onClick={() => {
+                    dispatch({ type: "location", location: element });
+                    navigate(`${element.id}`);
+                  }}
+                >
                   <p className="name">{element.name}</p>
                 </div>
-                <div className="col">
+                <div
+                  className="col"
+                  onClick={() =>
+                    window
+                      .open(
+                        `http://maps.google.co.uk/maps?q=${parseAddress(
+                          element.address
+                        )}`,
+                        "_blank"
+                      )
+                      .focus()
+                  }
+                >
                   <p className="text-muted">
                     <FontAwesomeIcon icon={faLocationDot} /> {element.address}
                   </p>

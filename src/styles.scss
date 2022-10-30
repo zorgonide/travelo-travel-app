@@ -7,7 +7,8 @@ html,
 body {
   min-height: 100vh;
 }
-.app {
+.app,
+#root {
   min-height: 100vh;
   background-color: $old-lace; //changes background color
 }
