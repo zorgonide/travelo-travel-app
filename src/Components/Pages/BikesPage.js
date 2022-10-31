@@ -141,7 +141,7 @@ function BikesPage() {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-sm-4 text-center">
-            <div className="card my-3 px-3" style={{ minWidth: "26rem" }}>
+            <div className="card my-3 px-3">
               <div className="card-body">
                 <p className="card-title display-6 gray">{location.name}</p>
                 <hr></hr>

@@ -84,41 +84,47 @@ function ReportPage() {
   } else {
     return (
       <div className="container-fluid">
-        <div className="row justify-content-center">
-          <div className="col-12">
-            <div className="card my-3" style={{ minWidth: "29rem" }}>
-              <div className="card-body text-left">
-                <p className="card-title display-6 gray text-center ">
-                  Select Bike
-                </p>
-                <hr />
-                <Select
-                  options={locationValue}
-                  onChange={(e) => setLocationId(e.value)}
-                  theme={(theme) => ({
-                    ...theme,
-                    borderRadius: 0,
-                    colors: {
-                      ...theme.colors,
-                      primary: "#4fbfa8",
-                    },
-                  })}
-                  className="my-3"
-                ></Select>
-                <div class="form-floating">
-                  <textarea
-                    class="form-control"
-                    placeholder="Leave a comment here"
-                    id="floatingTextarea2"
-                    style={{ height: "100px" }}
-                    onChange={(e) => setRemark(e.target.value)}
-                  ></textarea>
-                  <label htmlFor="floatingTextarea2">Comments</label>
-                </div>
-                <div className="d-grid gap-2 mt-3">
-                  <button onClick={reportBike} className="button button1 mb-3">
-                    Report
-                  </button>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-sm-4">
+              <div className="card my-3">
+                <div className="card-body text-left">
+                  <p className="card-title display-6 gray text-center ">
+                    Report Bike
+                  </p>
+                  <hr />
+                  <Select
+                    options={locationValue}
+                    onChange={(e) => setLocationId(e.value)}
+                    theme={(theme) => ({
+                      ...theme,
+                      borderRadius: 0,
+                      colors: {
+                        ...theme.colors,
+                        primary: "#4fbfa8",
+                      },
+                      width: "200px",
+                    })}
+                    className="my-3"
+                  ></Select>
+                  <div class="form-floating">
+                    <textarea
+                      class="form-control"
+                      placeholder="Leave a comment here"
+                      id="floatingTextarea2"
+                      style={{ height: "100px" }}
+                      onChange={(e) => setRemark(e.target.value)}
+                    ></textarea>
+                    <label htmlFor="floatingTextarea2">Comments</label>
+                  </div>
+                  <div className="d-grid gap-2 mt-3">
+                    <button
+                      onClick={reportBike}
+                      className="button button1 mb-3"
+                    >
+                      Report
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

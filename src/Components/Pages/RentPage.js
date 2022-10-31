@@ -4,11 +4,13 @@ import {
   faMotorcycle,
   faLocationDot,
   faSearch,
+  faLocationArrow,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { fget } from "../Shared/apiCalls";
 import Error from "./Error";
 import { useUser } from "../Shared/user-context";
+import ReactTooltip from "react-tooltip";
 
 export default function RentPage() {
   const { dispatch } = useUser();
@@ -62,10 +64,12 @@ export default function RentPage() {
                     navigate(`${element.id}`);
                   }}
                 >
-                  <p className="name">{element.name}</p>
+                  <p className="name">
+                    <FontAwesomeIcon icon={faLocationDot} /> {element.name}
+                  </p>
                 </div>
                 <div
-                  className="col"
+                  className="col-6 col-sm-4"
                   onClick={() =>
                     window
                       .open(
@@ -77,11 +81,16 @@ export default function RentPage() {
                       .focus()
                   }
                 >
-                  <p className="text-muted">
-                    <FontAwesomeIcon icon={faLocationDot} /> {element.address}
+                  <p className="text-muted" data-tip="Click to navigate">
+                    <FontAwesomeIcon icon={faLocationArrow} /> {element.address}
                   </p>
+                  <ReactTooltip
+                    backgroundColor="#fde2bb"
+                    textColor="white"
+                    padding="0px 5px 7px"
+                  />
                 </div>
-                <div className="col-2">
+                <div className="col-12 col-sm-2">
                   <p className="text-danger">
                     <FontAwesomeIcon icon={faMotorcycle} />{" "}
                     {element.total_bikes}
@@ -101,12 +110,12 @@ export default function RentPage() {
     return (
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-12 col-sm-4 text-center">
-            <div className="card my-3 px-3" style={{ minWidth: "26rem" }}>
+          <div className="col-12 col-sm-5 text-center">
+            <div className="card my-3 px-3">
               <div className="card-body">
                 <p className="card-title display-6 gray">Select Location</p>
                 <hr />
-                <div className="input-group input-group-sm mb-3">
+                <div className="mb-3">
                   <input
                     type="text"
                     className="form-control"
@@ -114,11 +123,6 @@ export default function RentPage() {
                     placeholder="Search"
                     onChange={(e) => setLocation(e.target.value)}
                   />
-                  <div className="input-group-append">
-                    <span className="input-group-text">
-                      <FontAwesomeIcon icon={faSearch} size="xl" />
-                    </span>
-                  </div>
                 </div>
                 {filteredLocations.length === 0 ? (
                   <div className="row list-card pt-3 text-uppercase text-center">

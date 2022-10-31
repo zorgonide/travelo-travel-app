@@ -34,105 +34,107 @@ function LoginPage() {
   const navigate = useNavigate();
   return (
     <div className="container-fluid">
-      <div className="row justify-content-center">
-        <div className="col-12 text-center">
-          <div className="card my-3" style={{ minWidth: "29rem" }}>
-            <div className="card-body">
-              <p className="card-title display-6 gray">Log In</p>
-              <div className="img">
-                <img
-                  src={LogIn}
-                  width="260"
-                  height="230"
-                  className=""
-                  alt="login"
-                />
-              </div>
-              <Formik
-                initialValues={{
-                  password: "",
-                  email: "",
-                }}
-                validationSchema={LoginSchema}
-                onSubmit={async (values) => {
-                  fpost({
-                    url: `customer/LoginUser`,
-                    data: {
-                      email: values.email,
-                      password: values.password,
-                    },
-                  })
-                    .then((res) => res.data)
-                    .then((res) => {
-                      if (res.success) {
-                        dispatch({ type: "login", user: res.info });
-                        navigate("/");
-                      } else {
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12 col-sm-5 text-center">
+            <div className="card my-3">
+              <div className="card-body">
+                <p className="card-title display-6 gray">Log In</p>
+                <div className="img">
+                  <img
+                    src={LogIn}
+                    width="260"
+                    height="230"
+                    className=""
+                    alt="login"
+                  />
+                </div>
+                <Formik
+                  initialValues={{
+                    password: "",
+                    email: "",
+                  }}
+                  validationSchema={LoginSchema}
+                  onSubmit={async (values) => {
+                    fpost({
+                      url: `customer/LoginUser`,
+                      data: {
+                        email: values.email,
+                        password: values.password,
+                      },
+                    })
+                      .then((res) => res.data)
+                      .then((res) => {
+                        if (res.success) {
+                          dispatch({ type: "login", user: res.info });
+                          navigate("/");
+                        } else {
+                          Swal.fire({
+                            title: "Error",
+                            text: `Incorrect username or password`,
+                            icon: "error",
+                            confirmButtonText: "Dismiss",
+                          });
+                        }
+                      })
+                      .catch(() => {
                         Swal.fire({
                           title: "Error",
                           text: `Incorrect username or password`,
                           icon: "error",
                           confirmButtonText: "Dismiss",
                         });
-                      }
-                    })
-                    .catch(() => {
-                      Swal.fire({
-                        title: "Error",
-                        text: `Incorrect username or password`,
-                        icon: "error",
-                        confirmButtonText: "Dismiss",
                       });
-                    });
-                  // alert(JSON.stringify(values, null, 2));
-                }}
-              >
-                {({ errors, touched }) => (
-                  <Form>
-                    <div className="form-floating mb-3">
-                      <Field
-                        className={
-                          errors.email && touched.email
-                            ? "form-control is-invalid"
-                            : "form-control"
-                        }
-                        id="email"
-                        name="email"
-                        placeholder="example@email.com"
-                      />
-                      <label htmlFor="email">Email</label>
-                      <div className="error">
-                        <ErrorMessage name="email" />
+                    // alert(JSON.stringify(values, null, 2));
+                  }}
+                >
+                  {({ errors, touched }) => (
+                    <Form>
+                      <div className="form-floating mb-3">
+                        <Field
+                          className={
+                            errors.email && touched.email
+                              ? "form-control is-invalid"
+                              : "form-control"
+                          }
+                          id="email"
+                          name="email"
+                          placeholder="example@email.com"
+                        />
+                        <label htmlFor="email">Email</label>
+                        <div className="error">
+                          <ErrorMessage name="email" />
+                        </div>
                       </div>
-                    </div>
-                    <div className="form-floating mb-3">
-                      <Field
-                        className={
-                          errors.password && touched.password
-                            ? "form-control is-invalid"
-                            : "form-control"
-                        }
-                        id="password"
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                      />
-                      <label htmlFor="password">Password</label>
-                      <div className="error">
-                        <ErrorMessage name="password" />
+                      <div className="form-floating mb-3">
+                        <Field
+                          className={
+                            errors.password && touched.password
+                              ? "form-control is-invalid"
+                              : "form-control"
+                          }
+                          id="password"
+                          type="password"
+                          name="password"
+                          placeholder="password"
+                        />
+                        <label htmlFor="password">Password</label>
+                        <div className="error">
+                          <ErrorMessage name="password" />
+                        </div>
                       </div>
-                    </div>
-                    <div className="d-grid gap-2">
-                      <button type="submit" className="button button1 mb-3">
-                        Log in
-                      </button>
-                    </div>
-                  </Form>
-                )}
-              </Formik>
-            </div>
-            <div className="card-footer text-muted link">
-              Not registered? <Link to="/register">Sign Up</Link>
+                      <div className="d-grid gap-2">
+                        <button type="submit" className="button button1 mb-3">
+                          Log in
+                        </button>
+                      </div>
+                    </Form>
+                  )}
+                </Formik>
+              </div>
+              <div className="card-footer text-muted link">
+                Not registered? <Link to="/register">Sign Up</Link>
+              </div>
             </div>
           </div>
         </div>
