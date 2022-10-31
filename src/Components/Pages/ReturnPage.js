@@ -97,7 +97,7 @@ function ReturnPage() {
               <div className="card my-3">
                 <div className="card-body text-left">
                   <p className="card-title display-6 gray text-center ">
-                    Select Location
+                    Return Vehicle
                   </p>
                   <hr />
                   <div className="img text-center">

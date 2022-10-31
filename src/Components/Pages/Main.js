@@ -27,8 +27,12 @@ function Main() {
         <Route
           path="*"
           element={
-            <div>
-              <p>Page not found!</p>
+            <div className="container-fluid">
+              <div className="row align-items-center gray">
+                <div className="col">
+                  <p className="display-1">Page not found!</p>
+                </div>
+              </div>
             </div>
           }
         />
