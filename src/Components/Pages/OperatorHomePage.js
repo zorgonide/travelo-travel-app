@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationCrosshairs,
   faWrench,
-  faBug,
 } from "@fortawesome/free-solid-svg-icons";
 
 function OperatorHomePage() {
@@ -28,10 +27,10 @@ function OperatorHomePage() {
                 </div>
                 <div className="d-grid gap-2">
                   <button
-                    onClick={() => navigate("/rent")}
+                    onClick={() => navigate("/action")}
                     className="button button1 mb-3"
                   >
-                    <FontAwesomeIcon icon={faWrench} /> Action
+                    <FontAwesomeIcon icon={faWrench} /> Service
                   </button>
                 </div>
               </div>

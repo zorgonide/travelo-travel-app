@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "../Shared/ProtectedRoute";
+import ActionPage from "./ActionPage";
 import BikesPage from "./BikesPage";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
@@ -21,6 +22,7 @@ function Main() {
           <Route path="/rent/:locationId" element={<BikesPage />} />
           <Route path="/return" element={<ReturnPage />} />
           <Route path="/report" element={<ReportPage />} />
+          <Route path="/action" element={<ActionPage />} />
         </Route>
         <Route
           path="*"

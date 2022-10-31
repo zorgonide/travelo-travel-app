@@ -19,7 +19,7 @@ function BikesPage() {
   const [totalItems, setTotalItems] = useState([]);
   let { locationId } = useParams();
   const {
-    state: { location },
+    state: { location, user },
   } = useUser();
   useEffect(() => {
     fetchBikes();
@@ -54,7 +54,7 @@ function BikesPage() {
           url: `customer/AssignBike`,
           data: {
             vehicle_id: bikeId,
-            user_id: 1,
+            user_id: user.user_id,
           },
         })
           .then((res) => res.data)
@@ -110,7 +110,7 @@ function BikesPage() {
               <div className="col-6">
                 <p className="name">
                   {element.type === "gas_scooter"
-                    ? "Gas Scooter"
+                    ? "Electric Bike"
                     : "Electric Scooter"}
                 </p>
               </div>

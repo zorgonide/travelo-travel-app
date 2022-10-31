@@ -25,15 +25,21 @@ function ReportPage() {
         (result) => {
           setIsLoaded(true);
           setBikes(
-            result.info.map((ele) => {
-              return {
-                value: ele.id,
-                label:
-                  ele.type === "gas_scooter"
-                    ? "Gas Scooter ID - " + ele.id
-                    : "Electric Scooter ID - " + ele.id,
-              };
-            })
+            result.info
+              .map((ele) => {
+                return {
+                  value: ele.id,
+                  label:
+                    ele.type === "gas_scooter"
+                      ? "Electric Bike ID - " + ele.id
+                      : "Electric Scooter ID - " + ele.id,
+                };
+              })
+              .sort(function (a, b) {
+                if (a.value < b.value) return -1;
+                if (a.value > b.value) return 1;
+                return 0;
+              })
           );
         },
         (error) => {
