@@ -5,6 +5,7 @@ import {
   faLocationCrosshairs,
   faWrench,
 } from "@fortawesome/free-solid-svg-icons";
+import Operator from "../Images/operator.svg";
 
 function OperatorHomePage() {
   const navigate = useNavigate();
@@ -17,6 +18,15 @@ function OperatorHomePage() {
               <div className="card-body">
                 <p className="card-title display-6 gray">Select Action</p>
                 <hr />
+                <div className="img">
+                  <img
+                    src={Operator}
+                    width="260"
+                    height="230"
+                    className=""
+                    alt="Operator"
+                  />
+                </div>
                 <div className="d-grid gap-2">
                   <button
                     onClick={() => navigate("/return")}

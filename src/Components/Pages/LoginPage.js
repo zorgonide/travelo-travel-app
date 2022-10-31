@@ -9,21 +9,6 @@ import { fpost } from "../Shared/apiCalls";
 import Swal from "sweetalert2";
 import { useUser } from "../Shared/user-context";
 
-// function CountDisplay() {
-//   const {
-//     state: { count },
-//   } = useCount();
-//   return <div>{`The current count is ${count}`}</div>;
-// }
-
-// function Counter() {
-//   const { dispatch } = useCount();
-//   return (
-//     <button onClick={() => dispatch({ type: "increment" })}>
-//       Increment count
-//     </button>
-//   );
-// }
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().required("Required"),

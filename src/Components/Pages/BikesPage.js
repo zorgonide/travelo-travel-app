@@ -11,6 +11,7 @@ import { fget, fpost } from "../Shared/apiCalls";
 import Error from "./Error";
 import Swal from "sweetalert2";
 import { useUser } from "../Shared/user-context";
+import Loader from "./Loader";
 
 function BikesPage() {
   let navigate = useNavigate();
@@ -133,14 +134,14 @@ function BikesPage() {
     return address.split(" ").join("+");
   };
   if (!isLoaded) {
-    return <div>Loading Page</div>;
+    return <Loader></Loader>;
   } else if (error) {
     <Error error={error}></Error>;
   } else {
     return (
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-12 col-sm-4 text-center">
+          <div className="col-12 col-sm-5 text-center">
             <div className="card my-3 px-3">
               <div className="card-body">
                 <p className="card-title display-6 gray">{location.name}</p>

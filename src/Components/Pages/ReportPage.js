@@ -5,6 +5,10 @@ import Error from "./Error";
 import Select from "react-select";
 import { useUser } from "../Shared/user-context";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBug } from "@fortawesome/free-solid-svg-icons";
+import Loader from "./Loader";
+import Air from "../Images/air.svg";
 
 function ReportPage() {
   const navigate = useNavigate();
@@ -84,7 +88,7 @@ function ReportPage() {
   };
 
   if (!isLoaded) {
-    return <div>Loading Page</div>;
+    return <Loader></Loader>;
   } else if (error) {
     <Error error={error}></Error>;
   } else {
@@ -92,14 +96,24 @@ function ReportPage() {
       <div className="container-fluid">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 col-sm-4">
+            <div className="col-12 col-sm-5">
               <div className="card my-3">
                 <div className="card-body text-left">
                   <p className="card-title display-6 gray text-center ">
                     Report Bike
                   </p>
                   <hr />
+                  <div className="img text-center">
+                    <img
+                      src={Air}
+                      width="260"
+                      height="230"
+                      className=""
+                      alt="Air"
+                    />
+                  </div>
                   <Select
+                    placeholder="Select vehicle"
                     options={locationValue}
                     onChange={(e) => setLocationId(e.value)}
                     theme={(theme) => ({
@@ -128,7 +142,7 @@ function ReportPage() {
                       onClick={reportBike}
                       className="button button1 mb-3"
                     >
-                      Report
+                      <FontAwesomeIcon icon={faBug} /> Report
                     </button>
                   </div>
                 </div>

@@ -6,6 +6,7 @@ import {
   faCompass,
   faBug,
 } from "@fortawesome/free-solid-svg-icons";
+import Town from "../Images/town.svg";
 
 function CustomerHomePage() {
   const navigate = useNavigate();
@@ -18,6 +19,15 @@ function CustomerHomePage() {
               <div className="card-body">
                 <p className="card-title display-6 gray">Select Action</p>
                 <hr />
+                <div className="img">
+                  <img
+                    src={Town}
+                    width="260"
+                    height="230"
+                    className=""
+                    alt="pic"
+                  />
+                </div>
                 <div className="d-grid gap-2">
                   <button
                     onClick={() => navigate("/return")}

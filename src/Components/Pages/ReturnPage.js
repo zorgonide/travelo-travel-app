@@ -5,6 +5,10 @@ import Error from "./Error";
 import Select from "react-select";
 import { useUser } from "../Shared/user-context";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRotateLeft } from "@fortawesome/free-solid-svg-icons";
+import Loader from "./Loader";
+import Return from "../Images/return.svg";
 
 function ReturnPage() {
   const navigate = useNavigate();
@@ -61,9 +65,16 @@ function ReturnPage() {
           }).then((res) => {
             if (res.isConfirmed) navigate("/");
           });
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: `No vehicles to return`,
+            icon: "error",
+            confirmButtonText: "Dismiss",
+          });
         }
       })
-      .catch(() => {
+      .catch((error) => {
         Swal.fire({
           title: "Error",
           text: `Some error occurred`,
@@ -74,37 +85,53 @@ function ReturnPage() {
   };
 
   if (!isLoaded) {
-    return <div>Loading Page</div>;
+    return <Loader></Loader>;
   } else if (error) {
     <Error error={error}></Error>;
   } else {
     return (
       <div className="container-fluid">
-        <div className="row justify-content-center">
-          <div className="col-12">
-            <div className="card my-3" style={{ minWidth: "29rem" }}>
-              <div className="card-body text-left">
-                <p className="card-title display-6 gray text-center ">
-                  Select Location
-                </p>
-                <hr />
-                <Select
-                  options={locationValue}
-                  onChange={(e) => setLocationId(e.value)}
-                  theme={(theme) => ({
-                    ...theme,
-                    borderRadius: 0,
-                    colors: {
-                      ...theme.colors,
-                      primary: "#4fbfa8",
-                    },
-                  })}
-                ></Select>
-                <br></br>
-                <div className="d-grid gap-2">
-                  <button onClick={returnBike} className="button button1 mb-3">
-                    Return
-                  </button>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-sm-5">
+              <div className="card my-3">
+                <div className="card-body text-left">
+                  <p className="card-title display-6 gray text-center ">
+                    Select Location
+                  </p>
+                  <hr />
+                  <div className="img text-center">
+                    <img
+                      src={Return}
+                      width="260"
+                      height="230"
+                      className=""
+                      alt="Return"
+                    />
+                  </div>
+                  <Select
+                    placeholder="Select location"
+                    id="location"
+                    options={locationValue}
+                    onChange={(e) => setLocationId(e.value)}
+                    theme={(theme) => ({
+                      ...theme,
+                      borderRadius: 0,
+                      colors: {
+                        ...theme.colors,
+                        primary: "#4fbfa8",
+                      },
+                    })}
+                  ></Select>
+                  <br></br>
+                  <div className="d-grid gap-2">
+                    <button
+                      onClick={returnBike}
+                      className="button button1 mb-3"
+                    >
+                      <FontAwesomeIcon icon={faArrowRotateLeft} /> Return
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

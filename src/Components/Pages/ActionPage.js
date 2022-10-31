@@ -5,6 +5,7 @@ import Error from "./Error";
 import Select from "react-select";
 import { useUser } from "../Shared/user-context";
 import Swal from "sweetalert2";
+import Repair from "../Images/repair.svg";
 
 function ActionPage() {
   const navigate = useNavigate();
@@ -134,15 +135,24 @@ function ActionPage() {
       <div className="container-fluid">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 col-sm-4">
+            <div className="col-12 col-sm-5">
               <div className="card my-3">
                 <div className="card-body text-left">
                   <p className="card-title display-6 gray text-center ">
                     Service
                   </p>
                   <hr />
-                  <label htmlFor="bikes">Select bike</label>
+                  <div className="img text-center">
+                    <img
+                      src={Repair}
+                      width="260"
+                      height="230"
+                      className=""
+                      alt="Repair"
+                    />
+                  </div>
                   <Select
+                    placeholder="Select vehicle"
                     id="bikes"
                     options={bikes}
                     onChange={(e) => setBikeId(e.value)}
@@ -157,8 +167,8 @@ function ActionPage() {
                     })}
                     className="mb-3"
                   ></Select>
-                  <label htmlFor="actions">Select action</label>
                   <Select
+                    placeholder="Select action"
                     id="actions"
                     options={options}
                     onChange={(e) => setOption(e.value)}
@@ -176,8 +186,8 @@ function ActionPage() {
 
                   {option === "move_vehicle" ? (
                     <>
-                      <label htmlFor="actions">Select location</label>
                       <Select
+                        placeholder="Select location"
                         id="locations"
                         options={locationValue}
                         onChange={(e) => setLocationId(e.value)}

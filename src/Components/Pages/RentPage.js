@@ -11,6 +11,7 @@ import { fget } from "../Shared/apiCalls";
 import Error from "./Error";
 import { useUser } from "../Shared/user-context";
 import ReactTooltip from "react-tooltip";
+import Loader from "./Loader";
 
 export default function RentPage() {
   const { dispatch } = useUser();
@@ -44,7 +45,7 @@ export default function RentPage() {
     return address.split(" ").join("+");
   };
   if (!isLoaded) {
-    return <div>Loading Page</div>;
+    return <Loader></Loader>;
   } else if (error) {
     <Error error={error}></Error>;
   } else {
@@ -102,11 +103,14 @@ export default function RentPage() {
         </div>
       );
     };
-    let filteredLocations = totalItems.info.filter((location) => {
-      return (
-        location.name.toLowerCase().indexOf(locationValue.toLowerCase()) !== -1
-      );
-    });
+    let filteredLocations = totalItems.info
+      ? totalItems.info.filter((location) => {
+          return (
+            location.name.toLowerCase().indexOf(locationValue.toLowerCase()) !==
+            -1
+          );
+        })
+      : [];
     return (
       <div className="container">
         <div className="row justify-content-center">
