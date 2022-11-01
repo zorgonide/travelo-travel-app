@@ -85,6 +85,7 @@ function LoginPage() {
                           id="email"
                           name="email"
                           placeholder="example@email.com"
+                          autoFocus
                         />
                         <label htmlFor="email">Email</label>
                         <div className="error">

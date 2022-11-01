@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fget, fpost } from "../Shared/apiCalls";
 import Error from "./Error";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 import { useUser } from "../Shared/user-context";
 import Swal from "sweetalert2";
@@ -210,7 +212,7 @@ function ActionPage() {
                       onClick={processBike}
                       className="button button1 mb-3"
                     >
-                      Process
+                      <FontAwesomeIcon icon={faGear} /> Process
                     </button>
                   </div>
                 </div>

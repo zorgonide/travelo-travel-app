@@ -8,7 +8,7 @@ function HomePage() {
   // const {
   //   state: { user },
   // } = useUser();
-  let user = { type: "customer" };
+  let user = { type: "operator" };
   if (user.type === "customer") return <CustomerHomePage />;
   else if (user.type === "manager") return <ManagerHomePage />;
   else if (user.type === "operator") return <OperatorHomePage />;

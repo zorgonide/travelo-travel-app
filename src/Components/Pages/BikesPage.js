@@ -24,7 +24,6 @@ function BikesPage() {
   } = useUser();
   useEffect(() => {
     fetchBikes();
-    console.log(location);
   }, []);
   const fetchBikes = () => {
     fget({

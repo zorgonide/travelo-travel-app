@@ -9,6 +9,7 @@ import RegisterPage from "./RegisterPage";
 import RentPage from "./RentPage";
 import ReportPage from "./ReportPage";
 import ReturnPage from "./ReturnPage";
+import TrackPage from "./TrackPage";
 
 function Main() {
   return (
@@ -23,6 +24,7 @@ function Main() {
           <Route path="/return" element={<ReturnPage />} />
           <Route path="/report" element={<ReportPage />} />
           <Route path="/action" element={<ActionPage />} />
+          <Route path="/track" element={<TrackPage />} />
         </Route>
         <Route
           path="*"

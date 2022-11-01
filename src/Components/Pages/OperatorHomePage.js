@@ -29,7 +29,7 @@ function OperatorHomePage() {
                 </div>
                 <div className="d-grid gap-2">
                   <button
-                    onClick={() => navigate("/return")}
+                    onClick={() => navigate("/track")}
                     className="button button1 mb-3"
                   >
                     <FontAwesomeIcon icon={faLocationCrosshairs} /> Track
