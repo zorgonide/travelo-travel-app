@@ -107,6 +107,9 @@ function TrackPage() {
                   <p className="">Defective</p>
                 </div>
                 <div className="col text-center">
+                  <p className="">Location</p>
+                </div>
+                <div className="col text-center">
                   <p className="">Battery Status</p>
                 </div>
               </div>
@@ -148,6 +151,9 @@ function TrackPage() {
                 </p>
               </div>
               <div className="col text-center">
+                <p className="">{element.location_id}</p>
+              </div>
+              <div className="col text-center">
                 <p className="text-muted">
                   <FontAwesomeIcon
                     icon={getBatteryLevel(element.battery)}
@@ -183,7 +189,18 @@ function TrackPage() {
                 </p>
                 <hr />
                 <div className="row">
-                  <div className="col-12 col-sm-3 px-4">
+                  <div className="col-12 col-sm-3 mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      aria-label="Search"
+                      placeholder="Search vehicle type"
+                      onChange={(e) => setSearch(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  {/* <div className="col-12 col-sm-3 px-4">
                     <div className="row">
                       <input
                         type="text"
@@ -204,7 +221,7 @@ function TrackPage() {
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col px-4">
                     {filteredBikes.length === 0 ? (
                       <div className="row list-card pt-3 text-uppercase text-center">
