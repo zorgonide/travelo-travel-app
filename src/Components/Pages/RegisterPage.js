@@ -45,7 +45,7 @@ function RegisterPage() {
         <div className="row justify-content-center">
           <div className="col-12 col-sm-5 text-center">
             <div className="card my-3">
-              {/* <img src="..." class="card-img-top" alt="..."> */}
+              {/* <img src="..." className="card-img-top" alt="..."> */}
               <div className="card-body">
                 {/* <p className="card-title display-6 gray text-center">Register</p> */}
                 <div className="img">

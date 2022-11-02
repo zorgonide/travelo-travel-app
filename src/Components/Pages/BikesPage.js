@@ -109,7 +109,7 @@ function BikesPage() {
               </div>
               <div className="col-6">
                 <p className="name">
-                  {element.type === "gas_scooter"
+                  {element.type === "electric_bike"
                     ? "Electric Bike"
                     : "Electric Scooter"}
                 </p>
@@ -156,13 +156,15 @@ function BikesPage() {
                     ></iframe>
                   </div>
                 </div>
-                {totalItems.info.length === 0 ? (
-                  <div className="row list-card pt-3 text-uppercase text-center">
-                    <p className="name">No bikes at this location</p>
-                  </div>
-                ) : (
-                  <RenderList />
-                )}
+                <div className="row px-4">
+                  {totalItems.info.length === 0 ? (
+                    <div className="row list-card pt-3 text-uppercase text-center">
+                      <p className="name">No bikes at this location</p>
+                    </div>
+                  ) : (
+                    <RenderList />
+                  )}
+                </div>
               </div>
             </div>
           </div>

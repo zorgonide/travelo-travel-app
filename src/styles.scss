@@ -77,16 +77,6 @@ body {
   padding-left: 4px;
   font-size: 15px;
 }
-.list-group-item {
-  :hover {
-    color: $sky-blue;
-  }
-  .name {
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-}
 
 .input-group-text {
   border-radius: 0 0.375rem 0.375em 0 !important;
@@ -98,6 +88,7 @@ body {
   margin-bottom: 5px;
   cursor: pointer;
   font-weight: 500;
+  // font-size: 1.5vw;
   :hover {
     .name {
       color: $sky-blue;

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fget, fpost } from "../Shared/apiCalls";
+import { fget } from "../Shared/apiCalls";
 import Error from "./Error";
-import Select from "react-select";
-import { useUser } from "../Shared/user-context";
-import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleCheck,
@@ -26,6 +23,7 @@ function TrackPage() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [totalItems, setTotalItems] = useState([]);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     fetchBikes();
   }, []);
@@ -85,11 +83,11 @@ function TrackPage() {
   const RenderList = () => {
     return (
       <>
-        {totalItems.map((element, index) => {
+        {filteredBikes.map((element, index) => {
           if (index === 0) {
             return (
               <div
-                className="row list-card pt-3 text-uppercase"
+                className="row list-card pt-3"
                 key={0}
                 // onClick={() => navigate(`/action`)}
               >
@@ -116,9 +114,9 @@ function TrackPage() {
           }
           return (
             <div
-              className="row list-card pt-3 text-uppercase"
+              className="row list-card pt-3"
               key={element.id}
-              onClick={() => navigate(`/action`)}
+              onClick={() => navigate(`/action/${element.id}`)}
             >
               <div className="col text-center">
                 <p>
@@ -128,7 +126,7 @@ function TrackPage() {
               </div>
               <div className="col-3 text-center">
                 <p className="name">
-                  {element.type === "gas_scooter"
+                  {element.type === "electric_bike"
                     ? "Electric Bike"
                     : "Electric Scooter"}
                 </p>
@@ -164,6 +162,11 @@ function TrackPage() {
       </>
     );
   };
+  let filteredBikes = totalItems
+    ? totalItems.filter((bike) => {
+        return bike.type.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+      })
+    : [];
   if (!isLoaded) {
     return <Loader></Loader>;
   } else if (error) {
@@ -180,19 +183,36 @@ function TrackPage() {
                 </p>
                 <hr />
                 <div className="row">
-                  <div className="col-12 col-sm-4">
-                    <div className="img text-center">
-                      <img
-                        src={Track}
-                        width="260"
-                        height="230"
-                        className=""
-                        alt="Return"
+                  <div className="col-12 col-sm-3 px-4">
+                    <div className="row">
+                      <input
+                        type="text"
+                        className="form-control"
+                        aria-label="Search"
+                        placeholder="Search vehicle type"
+                        onChange={(e) => setSearch(e.target.value)}
                       />
+                    </div>
+                    <div className="row">
+                      <div className="img text-center">
+                        <img
+                          src={Track}
+                          width="210"
+                          height="210"
+                          className=""
+                          alt="Return"
+                        />
+                      </div>
                     </div>
                   </div>
                   <div className="col px-4">
-                    <RenderList />
+                    {filteredBikes.length === 0 ? (
+                      <div className="row list-card pt-3 text-uppercase text-center">
+                        <p className="name">No vehicle found</p>
+                      </div>
+                    ) : (
+                      <RenderList />
+                    )}
                   </div>
                 </div>
               </div>

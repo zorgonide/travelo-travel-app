@@ -34,7 +34,7 @@ function ReportPage() {
                 return {
                   value: ele.id,
                   label:
-                    ele.type === "gas_scooter"
+                    ele.type === "electric_bike"
                       ? "Electric Bike ID - " + ele.id
                       : "Electric Scooter ID - " + ele.id,
                 };
@@ -127,9 +127,9 @@ function ReportPage() {
                     })}
                     className="my-3"
                   ></Select>
-                  <div class="form-floating">
+                  <div className="form-floating">
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       placeholder="Leave a comment here"
                       id="floatingTextarea2"
                       style={{ height: "100px" }}

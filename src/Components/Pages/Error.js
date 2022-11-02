@@ -9,10 +9,10 @@ function Error({ error }) {
         <div className="row justify-content-center" style={{ height: "80vh" }}>
           <div className="col-12 col-sm-5 align-self-center">
             <div className="card text-center border">
-              <img class="card-img-top" src={Pic} alt="Error" />
-              <div class="card-body">
-                <h5 class="card-title">Error</h5>
-                <p class="card-text">
+              <img className="card-img-top" src={Pic} alt="Error" />
+              <div className="card-body">
+                <h5 className="card-title">Error</h5>
+                <p className="card-text">
                   {error.length ? error : "Some error occurred"}
                 </p>
               </div>

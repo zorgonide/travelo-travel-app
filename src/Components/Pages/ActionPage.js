@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fget, fpost } from "../Shared/apiCalls";
 import Error from "./Error";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +8,7 @@ import Select from "react-select";
 import { useUser } from "../Shared/user-context";
 import Swal from "sweetalert2";
 import Repair from "../Images/repair.svg";
+import Loader from "./Loader";
 
 function ActionPage() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function ActionPage() {
   const [option, setOption] = useState("");
   const [locationValue, setLocation] = useState("");
   const [locationId, setLocationId] = useState(null);
+  let { bikeId } = useParams();
   let options = [
     {
       value: "repair",
@@ -40,7 +42,7 @@ function ActionPage() {
       .then((res) => res.data)
       .then(
         (result) => {
-          setIsLoaded(true);
+          // setIsLoaded(true);
           setLocation(
             result.info.map((ele) => {
               return {
@@ -56,9 +58,6 @@ function ActionPage() {
         }
       );
   };
-  const {
-    state: { user },
-  } = useUser();
   const fetchBikes = () => {
     fget({
       url: `customer/getVehicleDetails`,
@@ -66,14 +65,13 @@ function ActionPage() {
       .then((res) => res.data)
       .then(
         (result) => {
-          setIsLoaded(true);
           setBikes(
             result.info
               .map((ele) => {
                 return {
                   value: ele.id,
                   label:
-                    ele.type === "gas_scooter"
+                    ele.type === "electric_bike"
                       ? "Electric Bike ID - " + ele.id
                       : "Electric Scooter ID - " + ele.id,
                 };
@@ -84,6 +82,7 @@ function ActionPage() {
                 return 0;
               })
           );
+          setIsLoaded(true);
         },
         (error) => {
           setIsLoaded(true);
@@ -100,7 +99,7 @@ function ActionPage() {
     fpost({
       url: "customer/OperatorOperationsOnVehicle",
       data: {
-        vehicle_id: vehicleId,
+        vehicle_id: vehicleId || bikeId,
         action: option, // repair , move_vehicle
         location_id: locationId,
       },
@@ -129,10 +128,11 @@ function ActionPage() {
       });
   };
   if (!isLoaded) {
-    return <div>Loading Page</div>;
+    return <Loader></Loader>;
   } else if (error) {
     <Error error={error}></Error>;
   } else {
+    console.log(bikeId);
     return (
       <div className="container-fluid">
         <div className="container">
@@ -158,6 +158,9 @@ function ActionPage() {
                     id="bikes"
                     options={bikes}
                     onChange={(e) => setBikeId(e.value)}
+                    defaultValue={
+                      bikeId ? bikes.find((e) => e.value == bikeId) : null
+                    }
                     theme={(theme) => ({
                       ...theme,
                       borderRadius: 0,

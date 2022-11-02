@@ -128,13 +128,15 @@ export default function RentPage() {
                     onChange={(e) => setLocation(e.target.value)}
                   />
                 </div>
-                {filteredLocations.length === 0 ? (
-                  <div className="row list-card pt-3 text-uppercase text-center">
-                    <p className="name">No location found</p>
-                  </div>
-                ) : (
-                  <RenderList />
-                )}
+                <div className="row px-3">
+                  {filteredLocations.length === 0 ? (
+                    <div className="row list-card pt-3 text-uppercase text-center">
+                      <p className="name">No location found</p>
+                    </div>
+                  ) : (
+                    <RenderList />
+                  )}
+                </div>
               </div>
             </div>
           </div>
