@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import Header from "../Pages/Header";
 import { useUser } from "./user-context";
 
 function ProtectedRoute(props) {
@@ -7,7 +8,14 @@ function ProtectedRoute(props) {
     state: { loggedIn },
   } = useUser();
   let verified = loggedIn;
-  return verified ? <Outlet /> : <Navigate to={{ pathname: "/login" }} />;
+  return verified ? (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  ) : (
+    <Navigate to={{ pathname: "/login" }} />
+  );
 }
 
 export default ProtectedRoute;

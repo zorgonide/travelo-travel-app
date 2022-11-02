@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "../Shared/ProtectedRoute";
 import ActionPage from "./ActionPage";
 import BikesPage from "./BikesPage";
+import Header from "./Header";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";

@@ -11,6 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Loader from "./Loader";
 import Track from "../Images/map.svg";
+import ReactTooltip from "react-tooltip";
+
 import {
   faBattery5,
   faBattery3,
@@ -143,12 +145,17 @@ function TrackPage() {
                 </p>
               </div>
               <div className="col text-center">
-                <p className="">
+                <p className="" data-tip={element.remarks}>
                   <FontAwesomeIcon
                     icon={getDefective(element.is_defective)}
                     color={getDefectiveColor(element.is_defective)}
                   />
                 </p>
+                <ReactTooltip
+                  backgroundColor="#fde2bb"
+                  textColor="white"
+                  padding="0px 5px 7px"
+                />
               </div>
               <div className="col text-center">
                 <p className="">{element.location_id}</p>
