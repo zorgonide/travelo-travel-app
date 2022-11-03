@@ -115,7 +115,7 @@ export default function RentPage() {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-sm-5 text-center">
-            <div className="card my-3 px-3">
+            <div className="card my-2 px-3">
               <div className="card-body">
                 <p className="card-title display-6 gray">Select Location</p>
                 <hr />

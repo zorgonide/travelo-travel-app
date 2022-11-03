@@ -6,11 +6,13 @@ import BikesPage from "./BikesPage";
 import Header from "./Header";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
+import ProfilePage from "./ProfilePage";
 import RegisterPage from "./RegisterPage";
 import RentPage from "./RentPage";
 import ReportPage from "./ReportPage";
 import ReturnPage from "./ReturnPage";
 import TrackPage from "./TrackPage";
+import Wallet from "./Wallet";
 
 function Main() {
   return (
@@ -27,6 +29,8 @@ function Main() {
           <Route path="/action" element={<ActionPage />} />
           <Route path="/action/:bikeId" element={<ActionPage />} />
           <Route path="/track" element={<TrackPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/wallet" element={<Wallet />} />
         </Route>
         <Route
           path="*"

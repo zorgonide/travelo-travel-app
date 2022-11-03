@@ -71,7 +71,7 @@ function BikesPage() {
             } else {
               Swal.fire({
                 title: "Error",
-                text: `Some error occurred`,
+                text: `Can not rent more than one vehicle`,
                 icon: "error",
                 confirmButtonText: "Dismiss",
               });
@@ -141,7 +141,7 @@ function BikesPage() {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-sm-5 text-center">
-            <div className="card my-3 px-3">
+            <div className="card my-2 px-3">
               <div className="card-body">
                 <p className="card-title display-6 gray">{location.name}</p>
                 <hr></hr>
@@ -156,14 +156,16 @@ function BikesPage() {
                     ></iframe>
                   </div>
                 </div>
-                <div className="row px-4">
-                  {totalItems.info.length === 0 ? (
-                    <div className="row list-card pt-3 text-uppercase text-center">
-                      <p className="name">No bikes at this location</p>
-                    </div>
-                  ) : (
-                    <RenderList />
-                  )}
+                <div className="row px-3">
+                  <div className="col">
+                    {totalItems.info.length === 0 ? (
+                      <div className="row list-card pt-3 text-uppercase text-center">
+                        <p className="name">No bikes at this location</p>
+                      </div>
+                    ) : (
+                      <RenderList />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

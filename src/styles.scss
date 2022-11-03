@@ -57,7 +57,9 @@ body {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-
+.nav-link {
+  cursor: pointer;
+}
 .button1 {
   background-color: white;
   color: $sky-blue;
@@ -98,4 +100,8 @@ body {
 .form-control:focus {
   border-color: $pale-orange !important;
   box-shadow: inset 0 1px 1px $pale-orange, 0 0 8px $pale-orange !important;
+}
+.logout {
+  text-align: right;
+  color: $sky-blue;
 }

@@ -22,7 +22,7 @@ function LoginPage() {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-sm-5 text-center">
-            <div className="card my-3">
+            <div className="card my-2">
               <div className="card-body">
                 <p className="card-title display-6 gray">Log In</p>
                 <div className="img">

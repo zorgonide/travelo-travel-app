@@ -6,7 +6,7 @@ import { UserProvider } from "./Components/Shared/user-context";
 function App() {
   return (
     <UserProvider>
-      <Main />;
+      <Main />
     </UserProvider>
   );
 }

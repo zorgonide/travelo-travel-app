@@ -32,9 +32,9 @@ const SignUpSchema = Yup.object().shape({
   lastname: Yup.string()
     .matches(/^[A-Za-z]+$/, "Only letters allowed")
     .required("Required"),
-  phone: Yup.string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("Required"),
+  // phone: Yup.string()
+  //   .matches(phoneRegExp, "Phone number is not valid")
+  //   .required("Required"),
 });
 
 function RegisterPage() {
@@ -44,7 +44,7 @@ function RegisterPage() {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-sm-5 text-center">
-            <div className="card my-3">
+            <div className="card my-2">
               {/* <img src="..." className="card-img-top" alt="..."> */}
               <div className="card-body">
                 {/* <p className="card-title display-6 gray text-center">Register</p> */}
@@ -63,7 +63,7 @@ function RegisterPage() {
                     email: "",
                     firstname: "",
                     lastname: "",
-                    phone: "",
+                    // phone: "",
                     confirmpassword: "",
                   }}
                   validationSchema={SignUpSchema}
@@ -151,7 +151,7 @@ function RegisterPage() {
                           <ErrorMessage name="lastname" />
                         </div>
                       </div>
-                      <div className="form-floating mb-3">
+                      {/* <div className="form-floating mb-3">
                         <Field
                           className={
                             touched.phone && errors.phone
@@ -167,7 +167,7 @@ function RegisterPage() {
                         <div className="error">
                           <ErrorMessage name="phone" />
                         </div>
-                      </div>
+                      </div> */}
                       <div className="form-floating mb-3">
                         <Field
                           className={
