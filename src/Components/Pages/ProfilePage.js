@@ -30,27 +30,46 @@ function ProfilePage() {
     state: { user },
   } = useUser();
   const fetchUser = () => {
-    // var axios = require('axios');
-    var data = JSON.stringify({
-      user_id: user.user_id,
-    });
+    // // var axios = require('axios');
+    // var data = JSON.stringify({
+    //   user_id: user.user_id,
+    // });
 
-    var config = {
-      method: "get",
-      url: "http://127.0.0.1:8000/customer/getCustomerDetails",
-      headers: {
-        "Content-Type": "application/json",
+    // var config = {
+    //   method: "get",
+    //   url: "http://127.0.0.1:8000/customer/getCustomerDetails",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   data: data,
+    // };
+
+    // axios(config)
+    //   .then(function (response) {
+    //     setProfile(response.data.info.find((e) => e.id == user.user_id));
+    //     setIsLoaded(true);
+    //   })
+    //   .catch(function (error) {
+    //     setIsLoaded(true);
+    //   });
+    fpost({
+      url: "customer/getCustomerDetails",
+      data: {
+        user_id: user.user_id,
       },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        setProfile(response.data.info.find((e) => e.id == user.user_id));
+    })
+      .then((res) => res.data)
+      .then((res) => {
+        setProfile(res.info[0]);
         setIsLoaded(true);
       })
-      .catch(function (error) {
-        setIsLoaded(true);
+      .catch(() => {
+        Swal.fire({
+          title: "Error",
+          text: `Some error occurred in fetching user`,
+          icon: "error",
+          confirmButtonText: "Dismiss",
+        });
       });
   };
   const fetchWallet = () => {
