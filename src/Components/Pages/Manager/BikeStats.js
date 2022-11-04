@@ -44,9 +44,7 @@ function BikeStats({ data }) {
       },
       {
         label: "Journey time",
-        data: data.map((e) =>
-          e.journeyTime ? (e.journeyTime > 100 ? 100 : e.journeyTime) : 0
-        ),
+        data: data.map((e) => (e.journeyTime ? e.journeyTime / 3600 : 0)),
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
       {

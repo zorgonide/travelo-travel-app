@@ -27,7 +27,7 @@ const options = {
     },
     title: {
       display: true,
-      text: "User stats",
+      text: "User Stats",
     },
   },
 };

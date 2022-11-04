@@ -33,7 +33,7 @@ const options = {
     },
     title: {
       display: true,
-      text: "Hottest locations",
+      text: "Hottest Locations",
     },
   },
 };

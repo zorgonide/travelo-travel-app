@@ -135,90 +135,85 @@ function ActionPage() {
   } else {
     console.log(bikeId);
     return (
-      <div className="container-fluid">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-sm-5">
-              <div className="card my-2">
-                <div className="card-body text-left">
-                  <p className="card-title display-6 gray text-center ">
-                    Service
-                  </p>
-                  <hr />
-                  <div className="img text-center">
-                    <img
-                      src={Repair}
-                      width="260"
-                      height="230"
-                      className=""
-                      alt="Repair"
-                    />
-                  </div>
-                  <Select
-                    placeholder="Select vehicle"
-                    id="bikes"
-                    options={bikes}
-                    onChange={(e) => setBikeId(e.value)}
-                    defaultValue={
-                      bikeId ? bikes.find((e) => e.value == bikeId) : null
-                    }
-                    theme={(theme) => ({
-                      ...theme,
-                      borderRadius: 0,
-                      colors: {
-                        ...theme.colors,
-                        primary: "#4fbfa8",
-                      },
-                      width: "200px",
-                    })}
-                    className="mb-3"
-                  ></Select>
-                  <Select
-                    placeholder="Select action"
-                    id="actions"
-                    options={options}
-                    onChange={(e) => setOption(e.value)}
-                    theme={(theme) => ({
-                      ...theme,
-                      borderRadius: 0,
-                      colors: {
-                        ...theme.colors,
-                        primary: "#4fbfa8",
-                      },
-                      width: "200px",
-                    })}
-                    className="mb-3"
-                  ></Select>
+      <div className="container">
+        <div className="row my-4 justify-content-center">
+          <div className="col-12 col-sm-5">
+            <div className="card my-2">
+              <div className="card-body text-left">
+                <p className="card-title display-6 gray text-center ">
+                  Service
+                </p>
+                <hr />
+                <div className="img text-center">
+                  <img
+                    src={Repair}
+                    width="260"
+                    height="230"
+                    className=""
+                    alt="Repair"
+                  />
+                </div>
+                <Select
+                  placeholder="Select vehicle"
+                  id="bikes"
+                  options={bikes}
+                  onChange={(e) => setBikeId(e.value)}
+                  defaultValue={
+                    bikeId ? bikes.find((e) => e.value == bikeId) : null
+                  }
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      primary: "#4fbfa8",
+                    },
+                    width: "200px",
+                  })}
+                  className="mb-3"
+                ></Select>
+                <Select
+                  placeholder="Select action"
+                  id="actions"
+                  options={options}
+                  onChange={(e) => setOption(e.value)}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      primary: "#4fbfa8",
+                    },
+                    width: "200px",
+                  })}
+                  className="mb-3"
+                ></Select>
 
-                  {option === "move_vehicle" ? (
-                    <>
-                      <Select
-                        placeholder="Select location"
-                        id="locations"
-                        options={locationValue}
-                        onChange={(e) => setLocationId(e.value)}
-                        theme={(theme) => ({
-                          ...theme,
-                          borderRadius: 0,
-                          colors: {
-                            ...theme.colors,
-                            primary: "#4fbfa8",
-                          },
-                          width: "200px",
-                        })}
-                        className="mb-3"
-                      ></Select>
-                    </>
-                  ) : null}
+                {option === "move_vehicle" ? (
+                  <>
+                    <Select
+                      placeholder="Select location"
+                      id="locations"
+                      options={locationValue}
+                      onChange={(e) => setLocationId(e.value)}
+                      theme={(theme) => ({
+                        ...theme,
+                        borderRadius: 0,
+                        colors: {
+                          ...theme.colors,
+                          primary: "#4fbfa8",
+                        },
+                        width: "200px",
+                      })}
+                      className="mb-3"
+                    ></Select>
+                  </>
+                ) : null}
 
-                  <div className="d-grid gap-2 mt-3">
-                    <button
-                      onClick={processBike}
-                      className="button button1 mb-3"
-                    >
-                      <FontAwesomeIcon icon={faGear} /> Process
-                    </button>
-                  </div>
+                <div className="d-grid gap-2 mt-3">
+                  <button onClick={processBike} className="button button1 mb-3">
+                    <FontAwesomeIcon icon={faGear} /> Process
+                  </button>
                 </div>
               </div>
             </div>

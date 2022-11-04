@@ -12,7 +12,7 @@ const options = {
     },
     title: {
       display: true,
-      text: "At a glance",
+      text: "At a Glance",
     },
   },
 };

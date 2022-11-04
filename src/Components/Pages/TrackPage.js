@@ -10,7 +10,6 @@ import {
   faBolt,
 } from "@fortawesome/free-solid-svg-icons";
 import Loader from "./Loader";
-import Track from "../Images/map.svg";
 import ReactTooltip from "react-tooltip";
 
 import {

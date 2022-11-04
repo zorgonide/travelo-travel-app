@@ -91,48 +91,43 @@ function ReturnPage() {
     <Error error={error}></Error>;
   } else {
     return (
-      <div className="container-fluid">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-sm-5">
-              <div className="card my-2">
-                <div className="card-body text-left">
-                  <p className="card-title display-6 gray text-center ">
-                    Return Vehicle
-                  </p>
-                  <hr />
-                  <div className="img text-center">
-                    <img
-                      src={Return}
-                      width="260"
-                      height="230"
-                      className=""
-                      alt="Return"
-                    />
-                  </div>
-                  <Select
-                    placeholder="Select location"
-                    id="location"
-                    options={locationValue}
-                    onChange={(e) => setLocationId(e.value)}
-                    theme={(theme) => ({
-                      ...theme,
-                      borderRadius: 0,
-                      colors: {
-                        ...theme.colors,
-                        primary: "#4fbfa8",
-                      },
-                    })}
-                  ></Select>
-                  <br></br>
-                  <div className="d-grid gap-2">
-                    <button
-                      onClick={returnBike}
-                      className="button button1 mb-3"
-                    >
-                      <FontAwesomeIcon icon={faArrowRotateLeft} /> Return
-                    </button>
-                  </div>
+      <div className="container">
+        <div className="row my-4 justify-content-center">
+          <div className="col-12 col-sm-5">
+            <div className="card my-2">
+              <div className="card-body text-left">
+                <p className="card-title display-6 gray text-center ">
+                  Return Vehicle
+                </p>
+                <hr />
+                <div className="img text-center">
+                  <img
+                    src={Return}
+                    width="260"
+                    height="230"
+                    className=""
+                    alt="Return"
+                  />
+                </div>
+                <Select
+                  placeholder="Select location"
+                  id="location"
+                  options={locationValue}
+                  onChange={(e) => setLocationId(e.value)}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      primary: "#4fbfa8",
+                    },
+                  })}
+                ></Select>
+                <br></br>
+                <div className="d-grid gap-2">
+                  <button onClick={returnBike} className="button button1 mb-3">
+                    <FontAwesomeIcon icon={faArrowRotateLeft} /> Return
+                  </button>
                 </div>
               </div>
             </div>

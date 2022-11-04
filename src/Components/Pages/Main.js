@@ -6,6 +6,8 @@ import BikesPage from "./BikesPage";
 import Header from "./Header";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
+import ManagerHomePage from "./ManagerHomePage";
+import ManageUsers from "./ManageUsers";
 import ProfilePage from "./ProfilePage";
 import RegisterPage from "./RegisterPage";
 import RentPage from "./RentPage";
@@ -31,6 +33,8 @@ function Main() {
           <Route path="/track" element={<TrackPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/wallet" element={<Wallet />} />
+          <Route path="/dashboard" element={<ManagerHomePage />} />
+          <Route path="/users" element={<ManageUsers />} />
         </Route>
         <Route
           path="*"
