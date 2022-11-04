@@ -207,28 +207,6 @@ function TrackPage() {
                   </div>
                 </div>
                 <div className="row">
-                  {/* <div className="col-12 col-sm-3 px-4">
-                    <div className="row">
-                      <input
-                        type="text"
-                        className="form-control"
-                        aria-label="Search"
-                        placeholder="Search vehicle type"
-                        onChange={(e) => setSearch(e.target.value)}
-                      />
-                    </div>
-                    <div className="row">
-                      <div className="img text-center">
-                        <img
-                          src={Track}
-                          width="210"
-                          height="210"
-                          className=""
-                          alt="Return"
-                        />
-                      </div>
-                    </div>
-                  </div> */}
                   <div className="col px-4">
                     {filteredBikes.length === 0 ? (
                       <div className="row list-card pt-3 text-uppercase text-center">

@@ -18,7 +18,7 @@ function Header() {
         Travelo
       </a>
       <button
-        class="custom-toggler navbar-toggler"
+        className="custom-toggler navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarsExample09"
@@ -36,7 +36,7 @@ function Header() {
         <ul className="navbar-nav">
           <li className="nav-item active">
             <a className="nav-link" onClick={() => navigate("/")}>
-              Home<span className="sr-only">(current)</span>
+              Home
             </a>
           </li>
           {user.type === "customer" ? (
