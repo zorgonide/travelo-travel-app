@@ -55,34 +55,43 @@ function Wallet() {
       confirmButtonText: "Recharge",
       showLoaderOnConfirm: true,
       preConfirm: (amount) => {
-        fpost({
-          url: "customer/RechargeWallet",
-          data: {
-            user_id: user.user_id,
-            amount: parseInt(amount),
-          },
-        })
-          .then((res) => res.data)
-          .then((res) => {
-            if (res.success) {
-              //check if number
-              Swal.fire({
-                confirmButtonColor: "#4fbfa8",
-                title: "Order Confirmed",
-                html: `<p>Wallet has been recharged with £ ${amount}`,
-                icon: "success",
-                confirmButtonText: "Okay",
-              });
-              fetchWallet();
-            } else {
-              Swal.fire({
-                title: "Error",
-                text: `Some error occurred`,
-                icon: "error",
-                confirmButtonText: "Dismiss",
-              });
-            }
+        console.log(typeof amount);
+        if (isNaN(+amount)) {
+          Swal.fire({
+            title: "Error",
+            text: `Enter a number`,
+            icon: "error",
+            confirmButtonText: "Dismiss",
           });
+        } else
+          fpost({
+            url: "customer/RechargeWallet",
+            data: {
+              user_id: user.user_id,
+              amount: parseInt(amount),
+            },
+          })
+            .then((res) => res.data)
+            .then((res) => {
+              if (res.success) {
+                //check if number
+                Swal.fire({
+                  confirmButtonColor: "#4fbfa8",
+                  title: "Order Confirmed",
+                  html: `<p>Wallet has been recharged with £ ${amount}`,
+                  icon: "success",
+                  confirmButtonText: "Okay",
+                });
+                fetchWallet();
+              } else {
+                Swal.fire({
+                  title: "Error",
+                  text: `Some error occurred`,
+                  icon: "error",
+                  confirmButtonText: "Dismiss",
+                });
+              }
+            });
       },
     }).then((res) => {
       // if (res.isConfirmed) navigate("/");

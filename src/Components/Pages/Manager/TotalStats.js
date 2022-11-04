@@ -5,7 +5,6 @@ import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const options = {
-  maintainAspectRatio: false,
   responsive: true,
   plugins: {
     legend: {

@@ -32,7 +32,7 @@ const options = {
   },
 };
 function OrdersPerUser({ data }) {
-  const labels = data.map((e) => e.id + " " + e.name);
+  const labels = data.map((e) => "ID - " + e.id + " " + e.name);
   const pdata = {
     labels,
     datasets: [

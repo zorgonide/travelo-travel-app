@@ -22,13 +22,11 @@ ChartJS.register(
 );
 
 const options = {
-  maintainAspectRatio: false,
   scales: {
     y: {
       beginAtZero: true,
     },
   },
-  responsive: true,
   plugins: {
     legend: {
       position: "top",

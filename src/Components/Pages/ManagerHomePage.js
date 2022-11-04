@@ -124,12 +124,10 @@ function ManagerHomePage() {
                 </p>
                 <hr />
                 <div className="row my-4 justify-content-center">
-                  <div className="col-12 align-self-center">
+                  <div className="col-12 col-sm-5 align-self-center">
                     <TotalStats data={totalStats} />
                   </div>
-                </div>
-                <div className="row my-4">
-                  <div className="col-12 col-sm">
+                  <div className="col-12 col-sm-7">
                     <HottestLocation data={hottestLocation} />
                   </div>
                 </div>
