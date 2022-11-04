@@ -106,50 +106,46 @@ function Wallet() {
     <Error error={error}></Error>;
   } else {
     return (
-      <div className="container-fluid">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-sm-5 ">
-              <div className="card my-2">
-                <div className="card-body">
-                  <p className="card-title display-6 gray text-center">
-                    Wallet
-                  </p>
-                  <hr />
-                  <div className="img text-center">
-                    <img
-                      src={Profile}
-                      width="260"
-                      height="230"
-                      className=""
-                      alt="pic"
-                    />
-                    <br></br>
-                    <div className="row list-card mx-1 my-3 p-3">
-                      <div className="col" style={{ textAlign: "left" }}>
-                        Amount spent
-                      </div>
-                      <div className="col" style={{ textAlign: "right" }}>
-                        <FontAwesomeIcon icon={faPoundSign} />{" "}
-                        {wallet.amount_spent}
-                      </div>
+      <div className="container">
+        <div className="row my-4 justify-content-center">
+          <div className="col-12 col-sm-5 ">
+            <div className="card my-2">
+              <div className="card-body">
+                <p className="card-title display-6 gray text-center">Wallet</p>
+                <hr />
+                <div className="img text-center">
+                  <img
+                    src={Profile}
+                    width="260"
+                    height="230"
+                    className=""
+                    alt="pic"
+                  />
+                  <br></br>
+                  <div className="row list-card mx-1 my-3 p-3">
+                    <div className="col" style={{ textAlign: "left" }}>
+                      Amount spent
                     </div>
-                    <div className="row list-card mx-1 my-3 p-3">
-                      <div className="col" style={{ textAlign: "left" }}>
-                        Balance
-                      </div>
-                      <div className="col" style={{ textAlign: "right" }}>
-                        <FontAwesomeIcon icon={faPoundSign} /> {wallet.balance}
-                      </div>
+                    <div className="col" style={{ textAlign: "right" }}>
+                      <FontAwesomeIcon icon={faPoundSign} />{" "}
+                      {wallet.amount_spent}
                     </div>
-                    <div className="d-grid gap-2 mt-3">
-                      <button
-                        onClick={() => rechargeWallet()}
-                        className="button button1 mb-3"
-                      >
-                        <FontAwesomeIcon icon={faWallet} /> Recharge
-                      </button>
+                  </div>
+                  <div className="row list-card mx-1 my-3 p-3">
+                    <div className="col" style={{ textAlign: "left" }}>
+                      Balance
                     </div>
+                    <div className="col" style={{ textAlign: "right" }}>
+                      <FontAwesomeIcon icon={faPoundSign} /> {wallet.balance}
+                    </div>
+                  </div>
+                  <div className="d-grid gap-2 mt-3">
+                    <button
+                      onClick={() => rechargeWallet()}
+                      className="button button1 mb-3"
+                    >
+                      <FontAwesomeIcon icon={faWallet} /> Recharge
+                    </button>
                   </div>
                 </div>
               </div>
