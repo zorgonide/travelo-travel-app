@@ -82,6 +82,7 @@ function RegisterPage() {
                       .then((res) => {
                         if (res.success) {
                           Swal.fire({
+                            confirmButtonColor: "#4fbfa8",
                             title: "Success",
                             text: `New user created`,
                             icon: "success",
@@ -179,6 +180,7 @@ function RegisterPage() {
                           type="password"
                           name="password"
                           placeholder="password"
+                          autoComplete="new-password"
                         />
                         <label htmlFor="password">Password</label>
                         <div className="error">
@@ -196,6 +198,7 @@ function RegisterPage() {
                           type="password"
                           name="confirmpassword"
                           placeholder="confirmpassword"
+                          autoComplete="new-password"
                         />
                         <label htmlFor="confirmpassword">
                           Confirm Password

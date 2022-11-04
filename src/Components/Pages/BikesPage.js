@@ -43,6 +43,7 @@ function BikesPage() {
   };
   const confirmOrder = (bikeId) => {
     Swal.fire({
+      confirmButtonColor: "#4fbfa8",
       title: "Confirm Order",
       text: `Do you want to book vehicle #${bikeId}`,
       icon: "question",

@@ -158,7 +158,7 @@ function TrackPage() {
                 />
               </div>
               <div className="col text-center">
-                <p className="">{element.location_id}</p>
+                <p className="">{element.location_name}</p>
               </div>
               <div className="col text-center">
                 <p className="text-muted">

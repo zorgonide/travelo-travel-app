@@ -68,6 +68,7 @@ function ReportPage() {
       .then((res) => {
         if (res.success) {
           Swal.fire({
+            confirmButtonColor: "#4fbfa8",
             title: "Success",
             text: `Bike has been reported`,
             icon: "success",

@@ -1,9 +1,16 @@
 import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../Shared/user-context";
 
 function Header() {
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
   const { dispatch } = useUser();
+  const {
+    state: { user },
+  } = useUser();
   let navigate = useNavigate();
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
@@ -11,33 +18,43 @@ function Header() {
         Travelo
       </a>
       <button
-        className="navbar-toggler"
+        class="custom-toggler navbar-toggler"
         type="button"
         data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
+        data-target="#navbarsExample09"
+        aria-controls="navbarsExample09"
+        aria-expanded={!isNavCollapsed ? true : false}
         aria-label="Toggle navigation"
+        onClick={handleNavCollapse}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarNav">
+      <div
+        className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
+        id="navbarNav"
+      >
         <ul className="navbar-nav">
           <li className="nav-item active">
             <a className="nav-link" onClick={() => navigate("/")}>
               Home<span className="sr-only">(current)</span>
             </a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" onClick={() => navigate("/profile")}>
-              Profile
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" onClick={() => navigate("/wallet")}>
-              Wallet
-            </a>
-          </li>
+          {user.type === "customer" ? (
+            <>
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => navigate("/profile")}>
+                  Profile
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => navigate("/wallet")}>
+                  Wallet
+                </a>
+              </li>
+            </>
+          ) : (
+            <></>
+          )}
         </ul>
       </div>
       <div className="col logout">
