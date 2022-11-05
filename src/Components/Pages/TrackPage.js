@@ -81,41 +81,46 @@ function TrackPage() {
     }
     return "green";
   };
+  const Headers = () => {
+    return (
+      <div
+        className="row list-card pt-3"
+        key={0}
+        // onClick={() => navigate(`/action`)}
+      >
+        <div className="col text-center">
+          <p>
+            {"ID"}
+            {/* <FontAwesomeIcon icon={faHashtag} /> {element.id} */}
+          </p>
+        </div>
+        <div className="col-3 text-center">
+          <p className="name">{"Vehicle type"}</p>
+        </div>
+        <div className="col text-center">
+          <p className="">Availability</p>
+        </div>
+        <div className="col text-center">
+          <p className="">Defective</p>
+        </div>
+        <div className="col text-center">
+          <p className="">Location</p>
+        </div>
+        <div className="col text-center">
+          <p className="">Battery Status</p>
+        </div>
+      </div>
+    );
+  };
   const RenderList = () => {
     return (
       <>
         {filteredBikes.map((element, index) => {
-          if (index === 0) {
-            return (
-              <div
-                className="row list-card pt-3"
-                key={0}
-                // onClick={() => navigate(`/action`)}
-              >
-                <div className="col text-center">
-                  <p>
-                    {"ID"}
-                    {/* <FontAwesomeIcon icon={faHashtag} /> {element.id} */}
-                  </p>
-                </div>
-                <div className="col-3 text-center">
-                  <p className="name">{"Vehicle type"}</p>
-                </div>
-                <div className="col text-center">
-                  <p className="">Availability</p>
-                </div>
-                <div className="col text-center">
-                  <p className="">Defective</p>
-                </div>
-                <div className="col text-center">
-                  <p className="">Location</p>
-                </div>
-                <div className="col text-center">
-                  <p className="">Battery Status</p>
-                </div>
-              </div>
-            );
-          }
+          // if (index === 0) {
+          //   return (
+
+          //   );
+          // }
           return (
             <div
               className="row list-card pt-3"
@@ -176,7 +181,8 @@ function TrackPage() {
   };
   let filteredBikes = totalItems
     ? totalItems.filter((bike) => {
-        return bike.type.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+        let bikeName = bike.id + bike.type;
+        return bikeName.toLowerCase().indexOf(search.toLowerCase()) !== -1;
       })
     : [];
   if (!isLoaded) {
@@ -200,7 +206,7 @@ function TrackPage() {
                       type="text"
                       className="form-control"
                       aria-label="Search"
-                      placeholder="Search vehicle type"
+                      placeholder="Search vehicle"
                       onChange={(e) => setSearch(e.target.value)}
                     />
                   </div>
@@ -212,7 +218,10 @@ function TrackPage() {
                         <p className="name">No vehicle found</p>
                       </div>
                     ) : (
-                      <RenderList />
+                      <>
+                        <Headers />
+                        <RenderList />
+                      </>
                     )}
                   </div>
                 </div>

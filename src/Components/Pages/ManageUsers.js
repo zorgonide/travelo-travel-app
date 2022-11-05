@@ -63,38 +63,38 @@ function ManageUsers() {
         }
       );
   };
+  const Headers = () => {
+    return (
+      <div
+        className="row list-card pt-3"
+        key={0}
+        // onClick={() => navigate(`/action`)}
+      >
+        <div className="col text-center">
+          <p>ID</p>
+        </div>
+        <div className="col-3 text-center">
+          <p className="">First Name</p>
+        </div>
+        <div className="col text-center">
+          <p className="">Last Name</p>
+        </div>
+        <div className="col text-center">
+          <p className="">Email</p>
+        </div>
+        <div className="col text-center">
+          <p className="">User Type</p>
+        </div>
+        <div className="col text-center">
+          <p className="">Remove</p>
+        </div>
+      </div>
+    );
+  };
   const RenderList = () => {
     return (
       <>
         {filteredUsers.map((element, index) => {
-          if (index === 0) {
-            return (
-              <div
-                className="row list-card pt-3"
-                key={0}
-                // onClick={() => navigate(`/action`)}
-              >
-                <div className="col text-center">
-                  <p>ID</p>
-                </div>
-                <div className="col-3 text-center">
-                  <p className="">First Name</p>
-                </div>
-                <div className="col text-center">
-                  <p className="">Last Name</p>
-                </div>
-                <div className="col text-center">
-                  <p className="">Email</p>
-                </div>
-                <div className="col text-center">
-                  <p className="">User Type</p>
-                </div>
-                <div className="col text-center">
-                  <p className="">Remove</p>
-                </div>
-              </div>
-            );
-          }
           return (
             <div
               className="row list-card1 pt-3"
@@ -134,9 +134,8 @@ function ManageUsers() {
   };
   let filteredUsers = totalItems
     ? totalItems.filter((user) => {
-        return (
-          user.first_name.toLowerCase().indexOf(search.toLowerCase()) !== -1
-        );
+        let fullName = user.first_name + user.last_name;
+        return fullName.toLowerCase().indexOf(search.toLowerCase()) !== -1;
       })
     : [];
   return (
@@ -155,7 +154,7 @@ function ManageUsers() {
                     type="text"
                     className="form-control"
                     aria-label="Search"
-                    placeholder="Search first name"
+                    placeholder="Search name"
                     onChange={(e) => setSearch(e.target.value)}
                   />
                 </div>
@@ -167,7 +166,10 @@ function ManageUsers() {
                       <p className="name">No user found</p>
                     </div>
                   ) : (
-                    <RenderList />
+                    <>
+                      <Headers />
+                      <RenderList />
+                    </>
                   )}
                 </div>
               </div>
