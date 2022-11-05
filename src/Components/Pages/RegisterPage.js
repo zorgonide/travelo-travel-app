@@ -6,10 +6,8 @@ import SignUp from "../Images/signup.svg";
 import { fpost } from "../Shared/apiCalls";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
 const SignUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
@@ -17,8 +15,8 @@ const SignUpSchema = Yup.object().shape({
     .required("Required")
     .min(8, "Seems a bit short...")
     .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "At least 1 letter, 1 number and 1 special character"
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+      "At least 1 letter and 1 number"
     ),
   confirmpassword: Yup.string()
     .required("Required")
@@ -32,9 +30,6 @@ const SignUpSchema = Yup.object().shape({
   lastname: Yup.string()
     .matches(/^[A-Za-z]+$/, "Only letters allowed")
     .required("Required"),
-  // phone: Yup.string()
-  //   .matches(phoneRegExp, "Phone number is not valid")
-  //   .required("Required"),
 });
 
 function RegisterPage() {
@@ -195,7 +190,7 @@ function RegisterPage() {
                               : "form-control"
                           }
                           id="confirmpassword"
-                          type="password"
+                          type=""
                           name="confirmpassword"
                           placeholder="confirmpassword"
                           autoComplete="new-password"
@@ -209,7 +204,7 @@ function RegisterPage() {
                       </div>
                       <div className="d-grid gap-2">
                         <button type="submit" className="button button1 mb-3">
-                          Register
+                          <FontAwesomeIcon icon={faAddressCard} /> Register
                         </button>
                       </div>
                     </Form>

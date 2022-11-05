@@ -4,7 +4,8 @@ import LogIn from "../Images/login1.svg";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-// import { useCount } from "../Shared/count-context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { fpost } from "../Shared/apiCalls";
 import Swal from "sweetalert2";
 import { useUser } from "../Shared/user-context";
@@ -111,7 +112,7 @@ function LoginPage() {
                       </div>
                       <div className="d-grid gap-2">
                         <button type="submit" className="button button1 mb-3">
-                          Log in
+                          <FontAwesomeIcon icon={faRightToBracket} /> Log in
                         </button>
                       </div>
                     </Form>

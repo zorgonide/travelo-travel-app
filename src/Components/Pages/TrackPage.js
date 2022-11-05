@@ -181,7 +181,7 @@ function TrackPage() {
   };
   let filteredBikes = totalItems
     ? totalItems.filter((bike) => {
-        let bikeName = bike.id + bike.type;
+        let bikeName = bike.id + bike.type + bike.location_name;
         return bikeName.toLowerCase().indexOf(search.toLowerCase()) !== -1;
       })
     : [];

@@ -2,7 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../Shared/user-context";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faRightFromBracket,
+  faHome,
+  faWallet,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 function Header() {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
@@ -36,19 +42,19 @@ function Header() {
         <ul className="navbar-nav">
           <li className="nav-item active">
             <a className="nav-link" onClick={() => navigate("/")}>
-              Home
+              <FontAwesomeIcon icon={faHome} /> Home
             </a>
           </li>
           {user.type === "customer" ? (
             <>
               <li className="nav-item">
                 <a className="nav-link" onClick={() => navigate("/profile")}>
-                  Profile
+                  <FontAwesomeIcon icon={faUser} /> Profile
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" onClick={() => navigate("/wallet")}>
-                  Wallet
+                  <FontAwesomeIcon icon={faWallet} /> Wallet
                 </a>
               </li>
             </>
@@ -59,7 +65,7 @@ function Header() {
       </div>
       <div className="col logout">
         <a className="nav-link" onClick={() => dispatch({ type: "logout" })}>
-          Log Out
+          <FontAwesomeIcon icon={faRightFromBracket} /> Log Out
         </a>
       </div>
     </nav>
