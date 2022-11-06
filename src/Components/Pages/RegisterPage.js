@@ -13,11 +13,11 @@ const SignUpSchema = Yup.object().shape({
   password: Yup.string()
     .label("password")
     .required("Required")
-    .min(8, "Seems a bit short...")
-    .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-      "At least 1 letter and 1 number"
-    ),
+    .min(8, "Seems a bit short..."),
+  // .matches(
+  //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+  //   "At least 1 letter, 1 number and 1 special character"
+  // ),
   confirmpassword: Yup.string()
     .required("Required")
     .label("confirmpassword")

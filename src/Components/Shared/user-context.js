@@ -21,8 +21,6 @@ function userReducer(state, action) {
 
 function UserProvider({ children }) {
   const [state, dispatch] = React.useReducer(userReducer, { user: false });
-  // NOTE: you *might* need to memoize this value
-  // Learn more in http://kcd.im/optimize-context
   const value = { state, dispatch };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }

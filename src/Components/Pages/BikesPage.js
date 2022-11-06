@@ -69,6 +69,15 @@ function BikesPage() {
               }).then((res) => {
                 if (res.isConfirmed) navigate("/");
               });
+            } else if (
+              res.description == "Balance insuffient, please recharge"
+            ) {
+              Swal.fire({
+                title: "Error",
+                text: `Balance insufficient, please recharge`,
+                icon: "error",
+                confirmButtonText: "Dismiss",
+              });
             } else {
               Swal.fire({
                 title: "Error",

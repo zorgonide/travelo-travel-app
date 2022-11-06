@@ -1,9 +1,9 @@
 import React from "react";
 import CustomerHomePage from "./CustomerHomePage";
-import ManagerHomePage from "./ManagerHomePage";
+import ManagerHomePage from "./ManagerDashboard";
 import OperatorHomePage from "./OperatorHomePage";
 import { useUser } from "../Shared/user-context";
-import ManagerMainPage from "./ManagerMainPage";
+import ManagerMainPage from "./ManagerHomePage";
 
 function HomePage() {
   const {

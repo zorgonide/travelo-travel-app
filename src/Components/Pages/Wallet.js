@@ -122,7 +122,7 @@ function Wallet() {
                     alt="pic"
                   />
                   <br></br>
-                  <div className="row list-card mx-1 my-3 p-3">
+                  <div className="row list-card1 mx-1 my-3 p-3">
                     <div className="col" style={{ textAlign: "left" }}>
                       Amount spent
                     </div>
@@ -131,7 +131,7 @@ function Wallet() {
                       {wallet.amount_spent}
                     </div>
                   </div>
-                  <div className="row list-card mx-1 my-3 p-3">
+                  <div className="row list-card1 mx-1 my-3 p-3">
                     <div className="col" style={{ textAlign: "left" }}>
                       Balance
                     </div>

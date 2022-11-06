@@ -42,19 +42,19 @@ function Header() {
         <ul className="navbar-nav">
           <li className="nav-item active">
             <a className="nav-link" onClick={() => navigate("/")}>
-              <FontAwesomeIcon icon={faHome} /> Home
+              Home
             </a>
           </li>
           {user.type === "customer" ? (
             <>
               <li className="nav-item">
                 <a className="nav-link" onClick={() => navigate("/profile")}>
-                  <FontAwesomeIcon icon={faUser} /> Profile
+                  Profile
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" onClick={() => navigate("/wallet")}>
-                  <FontAwesomeIcon icon={faWallet} /> Wallet
+                  Wallet
                 </a>
               </li>
             </>

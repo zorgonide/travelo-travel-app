@@ -6,7 +6,7 @@ import BikesPage from "./BikesPage";
 import Header from "./Header";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
-import ManagerHomePage from "./ManagerHomePage";
+import ManagerHomePage from "./ManagerDashboard";
 import ManageUsers from "./ManageUsers";
 import ProfilePage from "./ProfilePage";
 import RegisterPage from "./RegisterPage";
