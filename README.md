@@ -9,13 +9,13 @@ Customers -
  - **Report a vehicle** as defective.
  - **Pay** any charges on their account.
 
-Operators should be able to:
+Operators -
  - **Track** the location of all vehicles in the city.
  - **Charge** a vehicle when the battery is depleted.
  - **Repair** a defective vehicle.
  - **Move vehicles** to different locations around the city as needed.
 
-Managers should be able to:
+Managers -
  - **Generate reports** showing all vehicle activities over a defined time period, using appropriate **data visualisation** techniques.
 
 
