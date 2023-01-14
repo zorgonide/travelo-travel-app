@@ -1,5 +1,5 @@
 # Travelo - Bike Rental App
-[Project demo link](https://learnermanipal-my.sharepoint.com/:v:/g/personal/ammar_khurshid_learner_manipal_edu/EahZQiLvWmJMmB2JUdoOvgUB-L5Y4-IHXA3_zYliOmNopA?e=bIECha)
+## [Project demo link](https://learnermanipal-my.sharepoint.com/:v:/g/personal/ammar_khurshid_learner_manipal_edu/EahZQiLvWmJMmB2JUdoOvgUB-L5Y4-IHXA3_zYliOmNopA?e=bIECha)
 
 The application has 3 types of users with the following functionality - 
 
